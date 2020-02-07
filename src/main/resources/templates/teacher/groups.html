@@ -6,5 +6,21 @@
 </head>
 <body>
     <h1>TeacherGroups</h1>
+    <form action="" method="POST">
+        <input type="file" id="your-files" multiple>
+        <input type="submit">
+    </form>
+    <script>
+        let control = document.getElementById("your-files");
+        control.addEventListener("change", function(event) {
+            
+            for(let i = 0; i < files.length; i++) {
+                console.log("Filename: " + control.files[i].name);
+                console.log("Type: " + control.files[i].type);
+                console.log("Size: " + contole.files[i].size + " bytes");
+            }
+         
+        }, false);
+        </script>
 </body>
 </html>
