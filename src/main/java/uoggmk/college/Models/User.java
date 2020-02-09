@@ -1,7 +1,6 @@
 package uoggmk.college.Models;
 
 import lombok.Data;
-import lombok.experimental.Tolerate;
 
 import javax.persistence.*;
 
@@ -17,7 +16,8 @@ public class User {
     @Column(nullable = false)
     private String password;
     private Boolean enabled;
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
     private String firstName;
     private String middleName;
     private String lastName;

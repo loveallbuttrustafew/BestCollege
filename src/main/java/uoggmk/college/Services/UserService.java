@@ -14,13 +14,13 @@ public class UserService {
 
     public User findByUsername(String username) throws UserNotFoundException {
         User user = userRepository.findByUsername(username);
-        if(user == null)
+        if (user == null)
             throw new UserNotFoundException();
         return user;
     }
 
     public void addUser(User user) throws UserAlreadyExistsException {
-        try{
+        try {
             findByUsername(user.getUsername());
             userRepository.save(user);
         } catch (UserNotFoundException e) {
