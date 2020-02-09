@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    ul{
+        height:60px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: blueviolet;
+    }
+    li{
+        list-style-type: none;
+    }
+    li a{
+
+        text-decoration: none;
+        color: white;
+    }
+    body{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #btn_wrapper{
+        text-align: center;
+    }
+    #type_wrapper{
+        text-align: center;
+        display: none;
+    }
+    .form_wrapper{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        top: 200px;
+        display: none;
+    }
+    
+</style>
+<body>
+    <header>
+        <ul>
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="groups.html">Группы</a></li>
+            <li><a href="schedule.html">Расписание</a></li>
+            <li><a href="settings.html">Настройки</a></li>
+            <li><a href="../login.html">Выход</a></li>
+        </ul>
+    </header>
+    <div id="btn_wrapper">
+        <button id="add">ADD USER</button>
+    </div>
+    <div id="type_wrapper">
+        Выберите тип юзера:
+            <div>Админ<input type="radio" name="type_user" value="Админ" id="admin"></div>
+            <div>Препод<input type="radio" name="type_user" value="Преподаватель" id="teacher"></div>
+            <div>Студяга<input type="radio" name="type_user" value="Учащийся" id="student"></div>   
+    </div>
+        <div class="form_wrapper">
+            <form action="">
+              <div>  Имя Админа <input type="text"></div>
+              <div>  Логин Админа <input type="text"></div>
+              <div><input type="submit" value="Добавить"></div>
+                
+            </form>
+        </div>
+        <div class="form_wrapper">
+            <form action="">
+                <div>  Имя препода <input type="text"></div>
+                <div>  Логин препода <input type="text"></div>
+                <div><input type="submit" value="Добавить"></div>
+            </form>
+        </div>
+        <div class="form_wrapper">
+            <form action="">
+                <div>  Имя Студента <input type="text"></div>
+                <div>  Логин Студента <input type="text"></div>
+                <div>
+                    Курс<select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                </div>
+                <div>Группа Студяги <input type="text"></div>
+                <div><input type="submit" value="Добавить"></div>
+            </form>
+        </div>
+    <script>
+        const btn_wrapper = document.getElementById('btn_wrapper');
+        const add = document.getElementById('add');
+        const form_wrapper = document.getElementById('type_wrapper');
+        let admin_radio = document.getElementById('admin');
+        let teacher_radio = document.getElementById('teacher');
+        let student_radio = document.getElementById('student');
+        let forms = document.getElementsByClassName('form_wrapper');
+        add.addEventListener('click',function(){
+            form_wrapper.style.display = 'block';
+        });
+        admin_radio.addEventListener('click',function(){
+           check_form(this,teacher_radio,student_radio);
+        });
+        teacher_radio.addEventListener('click',function(){
+            check_form(admin_radio,this,student_radio);
+        });
+        student_radio.addEventListener('click',function(){
+            check_form(admin_radio,teacher_radio,this);
+        });
+        function check_form(btn1,btn2,btn3){
+            if(btn1.checked){
+                forms[0].style.display = 'block';
+            }else{
+                forms[0].style.display = 'none';
+            }
+            if(btn2.checked){
+                forms[1].style.display = 'block';
+            }else{
+                forms[1].style.display = 'none';
+            }
+            if(btn3.checked){
+                forms[2].style.display = 'block';
+            }else{
+                forms[2].style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
