@@ -12,6 +12,7 @@ public class User {
     private String username;
     @Column(nullable = false)
     private String password;
+    private Boolean enabled;
     private String firstName;
     private String middleName;
     private String lastName;
