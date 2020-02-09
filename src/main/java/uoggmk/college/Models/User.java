@@ -1,9 +1,13 @@
 package uoggmk.college.Models;
 
+import lombok.Data;
+import lombok.experimental.Tolerate;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
+@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,6 +17,7 @@ public class User {
     @Column(nullable = false)
     private String password;
     private Boolean enabled;
+    private String role;
     private String firstName;
     private String middleName;
     private String lastName;
