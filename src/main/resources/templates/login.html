@@ -85,11 +85,12 @@
  <body>
      <div id="form_wrapper">
         <form action="/login" method="POST" id="input_form">
-            <div><span>Логин:</span><input type="Text" name="login" id="user_login"></div>
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <div><span>Логин:</span><input type="Text" name="username" id="user_login"></div>
             <div><span>Пароль:</span><input type="password" name="password" id="user_password"></div>
               <p><input type="submit" value="Войти" id="sub"></p>
-         </form> 
-     </div>  
+         </form>
+     </div>
  <script>
      const wrapper = document.getElementById('form_wrapper');
      let user_login = document.getElementById('user_login');
