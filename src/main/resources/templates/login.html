@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html>
- <head>
-  <meta charset="utf-8">
-  <title>УО "ГГМК"</title>
-  <style>
+<head>
+    <meta charset="utf-8">
+    <title>УО "ГГМК"</title>
+    <style>
       @import url('https://fonts.googleapis.com/css?family=Comfortaa:600&display=swap');
    body{
     background-blend-mode: multiply;
@@ -80,18 +80,21 @@
        right: 2px;
        top: 70px;
    }
-</style>
- </head>
- <body>
-     <div id="form_wrapper">
-        <form action="/login" method="POST" id="input_form">
-            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-            <div><span>Логин:</span><input type="Text" name="username" id="user_login"></div>
-            <div><span>Пароль:</span><input type="password" name="password" id="user_password"></div>
-              <p><input type="submit" value="Войти" id="sub"></p>
-         </form>
-     </div>
- <script>
+
+
+
+    </style>
+</head>
+<body>
+<div id="form_wrapper">
+    <form action="/login" id="input_form" method="POST">
+        <input name="_csrf" type="hidden" value="{{_csrf.token}}"/>
+        <div><span>Логин:</span><input id="user_login" name="username" type="Text"></div>
+        <div><span>Пароль:</span><input id="user_password" name="password" type="password"></div>
+        <p><input id="sub" type="submit" value="Войти"></p>
+    </form>
+</div>
+<script>
      const wrapper = document.getElementById('form_wrapper');
      let user_login = document.getElementById('user_login');
      let user_password = document.getElementById('user_password');
@@ -146,6 +149,9 @@
            },5000);
         }
      }
- </script>
- </body>
+
+
+
+</script>
+</body>
 </html>

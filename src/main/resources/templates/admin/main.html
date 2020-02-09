@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Document</title>
 </head>
 <style>
@@ -42,58 +42,61 @@
         display: none;
     }
     
+
+
+
 </style>
 <body>
-    <header>
-        <ul>
-            <li><a href="main.html">Главная</a></li>
-            <li><a href="groups.html">Группы</a></li>
-            <li><a href="schedule.html">Расписание</a></li>
-            <li><a href="settings.html">Настройки</a></li>
-            <li><a href="../login.html">Выход</a></li>
-        </ul>
-    </header>
-    <div id="btn_wrapper">
-        <button id="add">ADD USER</button>
-    </div>
-    <div id="type_wrapper">
-        Выберите тип юзера:
-            <div>Админ<input type="radio" name="type_user" value="Админ" id="admin"></div>
-            <div>Препод<input type="radio" name="type_user" value="Преподаватель" id="teacher"></div>
-            <div>Студяга<input type="radio" name="type_user" value="Учащийся" id="student"></div>   
-    </div>
-        <div class="form_wrapper">
-            <form action="">
-              <div>  Имя Админа <input type="text"></div>
-              <div>  Логин Админа <input type="text"></div>
-              <div><input type="submit" value="Добавить"></div>
-                
-            </form>
+<header>
+    <ul>
+        <li><a href="main.html">Главная</a></li>
+        <li><a href="groups.html">Группы</a></li>
+        <li><a href="schedule.html">Расписание</a></li>
+        <li><a href="settings.html">Настройки</a></li>
+        <li><a href="../login.html">Выход</a></li>
+    </ul>
+</header>
+<div id="btn_wrapper">
+    <button id="add">ADD USER</button>
+</div>
+<div id="type_wrapper">
+    Выберите тип юзера:
+    <div>Админ<input id="admin" name="type_user" type="radio" value="Админ"></div>
+    <div>Препод<input id="teacher" name="type_user" type="radio" value="Преподаватель"></div>
+    <div>Студяга<input id="student" name="type_user" type="radio" value="Учащийся"></div>
+</div>
+<div class="form_wrapper">
+    <form action="">
+        <div> Имя Админа <input type="text"></div>
+        <div> Логин Админа <input type="text"></div>
+        <div><input type="submit" value="Добавить"></div>
+
+    </form>
+</div>
+<div class="form_wrapper">
+    <form action="">
+        <div> Имя препода <input type="text"></div>
+        <div> Логин препода <input type="text"></div>
+        <div><input type="submit" value="Добавить"></div>
+    </form>
+</div>
+<div class="form_wrapper">
+    <form action="">
+        <div> Имя Студента <input type="text"></div>
+        <div> Логин Студента <input type="text"></div>
+        <div>
+            Курс<select>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
         </div>
-        <div class="form_wrapper">
-            <form action="">
-                <div>  Имя препода <input type="text"></div>
-                <div>  Логин препода <input type="text"></div>
-                <div><input type="submit" value="Добавить"></div>
-            </form>
-        </div>
-        <div class="form_wrapper">
-            <form action="">
-                <div>  Имя Студента <input type="text"></div>
-                <div>  Логин Студента <input type="text"></div>
-                <div>
-                    Курс<select>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                      </select>
-                </div>
-                <div>Группа Студяги <input type="text"></div>
-                <div><input type="submit" value="Добавить"></div>
-            </form>
-        </div>
-    <script>
+        <div>Группа Студяги <input type="text"></div>
+        <div><input type="submit" value="Добавить"></div>
+    </form>
+</div>
+<script>
         const btn_wrapper = document.getElementById('btn_wrapper');
         const add = document.getElementById('add');
         const form_wrapper = document.getElementById('type_wrapper');
@@ -130,6 +133,9 @@
                 forms[2].style.display = 'none';
             }
         }
-    </script>
+
+
+
+</script>
 </body>
 </html>
