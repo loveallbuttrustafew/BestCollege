@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<header>
+    <div id="logo_wrapper">
+
+    </div>
+    <div id="add">
+        <span>Добавить</span>
+    </div>
+    <div id="search">
+        <input type="text" placeholder="Поиск">
+    </div>
+</header>
+<div id="wrapper_menu">
+    <div id="menu">
+        <div id="some_punct_menu">
+
+        </div>
+        <div id="settings">
+
+        </div>
+        <div id="exit">
+
+        </div>
+    </div>
+    <div id="groups">
+        <ul>
+            <span>Список групп:</span>
+            <li>ПСк-11</li>
+            <li>ТОС-21</li>
+            <li>Эк-32</li>
+        </ul>
+    </div>
+</div>
+<div id="group_info">
+    <div id="name_group">
+
+    </div>
+    <div id="student_list">
+
+    </div>
+    <div id="discipline_list">
+
+    </div>
+</div>
+<div id="add_toast_form">
+    <div id="add_choice">
+        <div id="add_user">Добавить пользователя<input type="radio" name="choice" value="add_user"></div>
+        <div id="add_group">Добавить группу<input type="radio" name="choice" value="add_group"></div>
+    </div>
+    <div id="user_form">
+        <form action="/admin/user/add" method="POST">
+            <input name="_csrf" type="hidden" value="{{_csrf.token}}"/>
+            <div id="user_type_wrapper">
+                <div>Админ<input type="radio" name="typeuser" value="ADMIN"></div>
+                <div>Преподаватель<input type="radio" name="typeuser" value="TEACHER"></div>
+                <div>Студент<input type="radio" name="typeuser" value="STUDENT"></div>
+            </div>
+            <div id="names_wrapper">
+                Имя<input type="text" name="firstname">
+                Фамилия<input type="text" name="secondname">
+                Отчество<input type="text" name="lastname">
+            </div>
+            <div id="login_pass">
+                <div id="login">Логин:<input type="text" name="username"></div>
+                <div id="password">Пароль:<input type="password" name="password"></div>
+            </div>
+            <div id="phone_number">
+                <div id="login">Телефон:<input type="text" name="phonenumber"></div>
+            </div>
+            <div id="student_book">
+                <div id="login">Номер зачётки:<input type="text" name="studentbook"></div>
+            </div>
+            <div id="sub">
+                <div><input type="submit" value="Добавить"></div>
+            </div>
+        </form>
+    </div>
+
+    </form>
+    <form action="" method="POST">
+        <input name="_csrf" type="hidden" value="{{_csrf.token}}"/>
+        <div id="add_group_wrapper">
+            <div id="group_name">
+                <div>Наименование группы:<input type="text" name="groupName"></div>
+            </div>
+            <div id="course">
+                Курс:
+                <div><input type="text" name="courseNumber" id="course"></div>
+
+                <div id="group_number">
+                    <div>Номер группы:<input type="text" name="groupNumber"></div>
+                </div>
+                <div id="sub_group">
+                    <div><input type="submit" value="Добавить"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="admin.js"></script>
+</body>
+</html>
