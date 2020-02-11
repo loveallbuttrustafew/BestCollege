@@ -22,9 +22,9 @@ public class UserService {
     public void addUser(User user) throws UserAlreadyExistsException {
         try {
             findByUsername(user.getUsername());
-            userRepository.save(user);
-        } catch (UserNotFoundException e) {
             throw new UserAlreadyExistsException();
+        } catch (UserNotFoundException e) {
+            userRepository.save(user);
         }
     }
 }
