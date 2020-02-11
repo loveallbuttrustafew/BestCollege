@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TeacherController {
     @GetMapping("/teacher")
     public String main() {
-        return "teacher/groups";
+        return "teacher";
     }
 }
