@@ -54,18 +54,18 @@
     </div>
       
 <!-------------------НАЧАЛО ФОРМЫ ДЛЯ СОЗДАНИЯ ГРУППЫ--------------------------------------------->
-    <form action="" method="POST">
+    <form action="/admin/group/add" method="POST">
         <input name="_csrf" type="hidden" value="{{_csrf.token}}"/>
         <div id="add_group_wrapper">
             <div id="group_name">
-                <div>Наименование группы:<input type="text" name="groupName"></div>
+                <div>Наименование группы:<input type="text" name="groupname"></div>
             </div>
             <div id="course">
                 Курс:
-                <div><input type="text" name="courseNumber" id="course"></div>
+                <div><input type="text" name="groupcourse" id="course"></div>
 
                 <div id="group_number">
-                    <div>Номер группы:<input type="text" name="groupNumber"></div>
+                    <div>Номер группы:<input type="text" name="groupnumber"></div>
                 </div>
                 <div id="sub_group">
                     <div><input type="submit" value="Добавить"></div>
