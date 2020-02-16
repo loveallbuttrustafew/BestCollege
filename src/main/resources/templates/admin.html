@@ -7,17 +7,19 @@
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
+<!----------------------------------------HEADER---------------------------------------------------------------------------------------------->
 <header>
     <div id="logo_wrapper">
 
     </div>
     <div id="add">
-        <span>Добавить</span>
+        <span>Добавить группу</span>
     </div>
     <div id="search">
         <input type="text" placeholder="Поиск">
     </div>
 </header>
+<!--------------------------------------------ВСПЛЫВАЮЩЕЕ МЕНЮ---------------------------------------------------------------------------->
 <div id="wrapper_menu">
     <div id="menu">
         <div id="some_punct_menu">
@@ -30,61 +32,28 @@
 
         </div>
     </div>
+<!---------------------------------СПИСОК-ГРУПП------------------------------------------------------------------------------------------>
     <div id="groups">
-        <ul>
-            <span>Список групп:</span>
-            <li>ПСк-11</li>
-            <li>ТОС-21</li>
-            <li>Эк-32</li>
-        </ul>
+        <div>
+           <ul id="group_list">
+
+           </ul>
+        </div>
     </div>
-</div>
+<!---------------------------------------ИНФОРМАЦИЯ О ГРУППЕ-------------------------------------------------------------------------------->
 <div id="group_info">
-    <div id="name_group">
-
-    </div>
-    <div id="student_list">
-
-    </div>
-    <div id="discipline_list">
-
+    <div id="user-discipline_wrapper">
+        <div id="add_user_form">Добавить пользователя</div>
+        <div id="add_discipline_forn">Добавить дисциплину</div>
     </div>
 </div>
+<!-------------------------------------НАЧАЛО БЛОКА ВСПЛЫВАЮЩЕЙ ФОРМЫ------------------------------------------------------------------------->
 <div id="add_toast_form">
-    <div id="add_choice">
-        <div id="add_user">Добавить пользователя<input type="radio" name="choice" value="add_user"></div>
-        <div id="add_group">Добавить группу<input type="radio" name="choice" value="add_group"></div>
+    <div id="close_toast_form_button">
+        <!-------Кнопка закрытия формы------------>
     </div>
-    <div id="user_form">
-        <form action="/admin/user/add" method="POST">
-            <input name="_csrf" type="hidden" value="{{_csrf.token}}"/>
-            <div id="user_type_wrapper">
-                <div>Админ<input type="radio" name="typeuser" value="ADMIN"></div>
-                <div>Преподаватель<input type="radio" name="typeuser" value="TEACHER"></div>
-                <div>Студент<input type="radio" name="typeuser" value="STUDENT"></div>
-            </div>
-            <div id="names_wrapper">
-                Имя<input type="text" name="firstname">
-                Фамилия<input type="text" name="secondname">
-                Отчество<input type="text" name="lastname">
-            </div>
-            <div id="login_pass">
-                <div id="login">Логин:<input type="text" name="username"></div>
-                <div id="password">Пароль:<input type="password" name="password"></div>
-            </div>
-            <div id="phone_number">
-                <div id="login">Телефон:<input type="text" name="phonenumber"></div>
-            </div>
-            <div id="student_book">
-                <div id="login">Номер зачётки:<input type="text" name="studentbook"></div>
-            </div>
-            <div id="sub">
-                <div><input type="submit" value="Добавить"></div>
-            </div>
-        </form>
-    </div>
-
-    </form>
+      
+<!-------------------НАЧАЛО ФОРМЫ ДЛЯ СОЗДАНИЯ ГРУППЫ--------------------------------------------->
     <form action="" method="POST">
         <input name="_csrf" type="hidden" value="{{_csrf.token}}"/>
         <div id="add_group_wrapper">
@@ -104,7 +73,7 @@
             </div>
         </div>
     </form>
-</div>
+<!----------------------------------------------------------------------------------------------->
 <script src="admin.js"></script>
 </body>
 </html>

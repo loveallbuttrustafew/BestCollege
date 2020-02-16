@@ -1,4 +1,4 @@
-//Выпадающая меню
+//Выпадающее меню
 let menu = document.getElementById('menu');
 let settings = document.getElementById('settings');
 let points = document.getElementById('some_punct_menu');
@@ -16,30 +16,60 @@ menu.addEventListener('mouseout',function(){
 });
 
 // Всплывающая форма
-let add = document.getElementById('add');
-let add_form = document.getElementById('add_toast_form');
-let add_user = document.getElementById('user_form');
-let add_group = document.getElementById('add_group_wrapper');
-let type_add = document.getElementsByName('choice');
-let type_radio = document.getElementsByName('type_user');
+let add = document.getElementById('add'); // Кнопка для всплывающей формы добавки юзера и группы
+let add_form = document.getElementById('add_toast_form'); // всплывающая форма добавки юзера и группы
+let user_form = document.getElementById('user_form');  // форма для добавки юзера
+let add_group_form = document.getElementById('add_group_wrapper'); // форма для добавки группы
+let type_radio = document.getElementsByName('type_user'); // массив радиобаттонов для выбора типа юзера
+const close_btn = document.getElementById('close_toast_form_button'); // кнопка закрытия формы
+const add_user_form = document.getElementById('add_user_form');
+const add_discipline_form = document.getElementById('add_discipline_form');
 
+
+close_btn.addEventListener('click',function(){
+    add_form.style.display = 'none';
+});
 add.addEventListener('click',function(){
     add_form.style.display = 'block';
+    add_group_form.style.display = 'block';
+    user_form.style.display = 'none';
+});
+add_user_form.addEventListener('click',function(){
+    add_form.style.display = 'block';
+    add_group_form.style.display = 'none';
+    user_form.style.display = 'block';
 });
 
-for(let i=0;i<type_add.length;i++){
-    if(type_add[i].value === 'add_user'){
-        type_add[i].addEventListener('click',function(){
-            add_user.style.display = 'block';
-            add_group.style.display = 'none';
-        });
+
+
+//-------------------------------------------------------------------------------------------------------------------------------//
+
+// запросы на списки групп
+let all_group_info = document.getElementById("group_info");
+const groups = document.getElementById('group_list');
+const xhr = new XMLHttpRequest();
+xhr.open('GET','/admin/group/getall');// подготовка запроса для отправки на сервер
+xhr.send(); // отправляем запрос
+xhr.addEventListener('readystatechange',function(){
+    if(xhr.readyState === 4){
+       for(let i = 0;i<JSON.parse(xhr.responseText).length;i++){
+           some_group_elem = document.createElement('li');
+           some_group_elem.classList.add('close');
+           some_group_elem.textContent = JSON.parse(xhr.responseText)[i]['name'];
+           groups.appendChild(some_group_elem);
+
+           some_group_elem.addEventListener('click',function(){
+                 let isOpengroups = document.getElementsByClassName('close');
+                 for(let i = 0;i<isOpengroups.length;i++){
+                    if(isOpengroups[i].classList.contains('open')){
+                        isOpengroups[i].classList.remove('open');
+                    }
+                 };
+                 this.classList.add('open');
+
+                console.log(JSON.parse(xhr.responseText)[i]["number"]);
+                all_group_info.innerHTML = JSON.parse(xhr.responseText)[i]["number"];
+            });
+       }
     }
-    if(type_add[i].value === 'add_group'){
-        type_add[i].addEventListener('click',function(){
-            add_group.style.display = 'block';
-            add_user.style.display = 'none';
-        });
-}}
-
-console.log(type_add);
-
+});
