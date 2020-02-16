@@ -23,4 +23,7 @@ public class User {
     private String lastName;
     private String studentsBookNumber;
     private String phoneNumber;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "groupId")
+    private Group group;
 }
