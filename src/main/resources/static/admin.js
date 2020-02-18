@@ -61,7 +61,13 @@ xhr.addEventListener('readystatechange',function(){
                  };
                  this.classList.add('open');
 
-                all_group_info.innerHTML = JSON.parse(xhr.responseText)[i]["number"];
+
+                 let xhr1 = new XMLHttpRequest();
+                    xhr1.open('GET','/admin/group/info?id=' + JSON.parse(xhr.responseText)[i]["id"]);// подготовка запроса для отправки на сервер
+                    xhr1.send();
+                    xhr1.addEventListener('readystatechange',function(){
+                    all_group_info.innerHTML = this.responseText;
+                    });                
             });
        }
     }
