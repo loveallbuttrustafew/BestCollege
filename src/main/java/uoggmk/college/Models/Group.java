@@ -1,5 +1,6 @@
 package uoggmk.college.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -9,7 +10,8 @@ import java.util.Set;
 @Entity
 @Table(name = "c_groups")
 @Data
-@EqualsAndHashCode(exclude = {"students"})
+@EqualsAndHashCode(exclude = {"students", "subjects"})
+@JsonIgnoreProperties(value = {"students", "subjects"})
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +24,6 @@ public class Group {
     private Byte course;
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
     private Set<User> students;
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
+    private Set<Subject> subjects;
 }

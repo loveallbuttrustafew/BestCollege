@@ -5,12 +5,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
 @Data
-@EqualsAndHashCode(exclude = {"group"})
-@JsonIgnoreProperties(value = {"group"})
+@EqualsAndHashCode(exclude = {"group", "subjects"})
+@JsonIgnoreProperties(value = {"group", "subjects"})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,4 +31,6 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "groupId")
     private Group group;
+    @ManyToMany(mappedBy = "teachers",fetch = FetchType.LAZY)
+    private Set<Subject> subjects;
 }

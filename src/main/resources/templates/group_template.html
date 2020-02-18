@@ -5,14 +5,19 @@
 </div>
 <div id="students_wrapper">
     {{#group.students}}
-    Имя:{{firstName}}
+    <span>Имя:{{firstName}}
     Фамилия:{{lastName}}
     Отчество:{{middleName}}
     Номер зачётки:{{studentsBookNumber}}
     Номер телефона:{{phoneNumber}}
+    </span>
     {{/group.students}}
 </div>
-<div id="discipline_wrapper"></div>
+<div id="discipline_wrapper">
+    {{#group.subjects}}
+    <span>Имя:{{name}}</span>
+    {{/group.subjects}}
+</div>
 
 <!-------------------------------------------->
 <form action="/admin/user/add" method="POST">
@@ -39,10 +44,10 @@
 <!--------------------------------------------------------------->
 <form action="/admin/subject/add" method="POST">
     <input name="_csrf" type="hidden" value="{{_csrf.token}}"/>
-    <input name="id" type="hidden" value="{{group.id}}"/>
+    <input name="groupid" type="hidden" value="{{group.id}}"/>
     <div id="add_subject_wrapper">
         <div id="dicsipline_name">
-            <div>Название дисциплины:<input type="text" name="firstname" placeholder="Название дисциплины"></div>
+            <div>Название дисциплины:<input type="text" name="subjectname" placeholder="Название дисциплины"></div>
         </div>
             <div id="sub_discipline">
                 <div><input type="submit" value="Добавить"></div>
