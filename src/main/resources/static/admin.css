@@ -216,3 +216,7 @@ header{
         background-repeat: no-repeat;
     }
 /*----------------------------------------------------------------------------------------------------------------------*/
+#user-discipline_wrapper{
+    display: flex;
+    justify-content: space-around;
+}

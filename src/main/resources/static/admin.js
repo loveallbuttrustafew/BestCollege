@@ -67,7 +67,6 @@ xhr.addEventListener('readystatechange',function(){
                  };
                  this.classList.add('open');
 
-                console.log(JSON.parse(xhr.responseText)[i]["number"]);
                 all_group_info.innerHTML = JSON.parse(xhr.responseText)[i]["number"];
             });
        }
