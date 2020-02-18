@@ -2,6 +2,7 @@ package uoggmk.college.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -86,4 +87,14 @@ public class AdminController {
         return "redirect:/admin";
     }
 
+    @PostMapping("/admin/group/info")
+    public String groupAdd(@RequestParam("id") Long id, Model model) {
+        try {
+            Group group = groupService.findById(id);
+            model.addAttribute("group", group);
+        } catch (GroupNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "group_template";
+    }
 }
