@@ -1,6 +1,43 @@
 <div id="user-discipline_wrapper">
     <div id="add_user_form">Добавить пользователя</div>
-    <div id="add_discipline_forn">Добавить дисциплину</div>
+    <div id="add_discipline_form">Добавить дисциплину</div>
+    <div id="add_teacher_form">Добавить препода</div>
 </div>
 <div id="students_wrapper"></div>
 <div id="discipline_wrapper"></div>
+<!-------------------------------------------->
+
+
+<form action="/admin/user/add" method="POST">
+    <input name="_csrf" type="hidden" value="{{_csrf.token}}"/>
+    <input name="id" type="hidden" value="{{id}}"/>
+    <div id="add_user_wrapper">
+        <div id="group_name">
+            <div>Имя:<input type="text" name="firstname" placeholder="Имя"></div>
+            <div>Фамилия:<input type="text" name="secondname" placeholder="Фамилия"></div>
+            <div>Отчество:<input type="text" name="lastname" placeholder="Отчество"></div>
+            <div>Номер зачётки:<input type="text" name="studentbook" placeholder="Номер зачётки:"></div>
+            <div>Номер телефона:<input type="text" name="phonenumber" placeholder="Номер телефона"></div>
+            <div>Логин:<input type="text" name="phonenumber" placeholder="Логин"></div>
+            <div>Пароль:<input type="password" name="phonenumber" placeholder="Пароль"></div>
+        </div>
+            <div id="sub_user">
+                <div><input type="submit" value="Добавить"></div>
+            </div>
+        </div>
+    </div>
+</form>
+<!--------------------------------------------------------------->
+<form action="/admin/subject/add" method="POST">
+    <input name="_csrf" type="hidden" value="{{_csrf.token}}"/>
+    <input name="id" type="hidden" value="{{id}}"/>
+    <div id="add_user_wrapper">
+        <div id="dicsipline_name">
+            <div>Название дисциплины:<input type="text" name="firstname" placeholder="Название дисциплины"></div>
+        </div>
+            <div id="sub_discipline">
+                <div><input type="submit" value="Добавить"></div>
+            </div>
+        </div>
+    </div>
+</form>
