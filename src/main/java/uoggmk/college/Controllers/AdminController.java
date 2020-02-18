@@ -87,7 +87,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping("/admin/group/info")
+    @GetMapping("/admin/group/info")
     public String groupAdd(@RequestParam("id") Long id, Model model) {
         try {
             Group group = groupService.findById(id);
