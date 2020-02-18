@@ -1,12 +1,16 @@
 package uoggmk.college.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 @Data
+@EqualsAndHashCode(exclude = {"group"})
+@JsonIgnoreProperties(value = {"group"})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

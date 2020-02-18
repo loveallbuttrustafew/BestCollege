@@ -1,6 +1,7 @@
 package uoggmk.college.Models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -8,6 +9,7 @@ import java.util.Set;
 @Entity
 @Table(name = "c_groups")
 @Data
+@EqualsAndHashCode(exclude = {"students"})
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
