@@ -22,7 +22,6 @@ let user_form = document.getElementById('user_form');  // форма для до
 let add_group_form = document.getElementById('add_group_wrapper'); // форма для добавки группы
 let type_radio = document.getElementsByName('type_user'); // массив радиобаттонов для выбора типа юзера
 const close_btn = document.getElementById('close_toast_form_button'); // кнопка закрытия формы
-const add_user_form = document.getElementById('add_user_form');
 const add_discipline_form = document.getElementById('add_discipline_form');
 
 
@@ -33,11 +32,6 @@ add.addEventListener('click',function(){
     add_form.style.display = 'block';
     add_group_form.style.display = 'block';
     user_form.style.display = 'none';
-});
-add_user_form.addEventListener('click',function(){
-    add_form.style.display = 'block';
-    add_group_form.style.display = 'none';
-    user_form.style.display = 'block';
 });
 
 
