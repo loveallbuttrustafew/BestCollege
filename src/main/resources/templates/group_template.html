@@ -5,17 +5,18 @@
 </div>
 <div id="students_wrapper">
     {{#group.students}}
-    <span>Имя:{{firstName}}
-    Фамилия:{{lastName}}
-    Отчество:{{middleName}}
-    Номер зачётки:{{studentsBookNumber}}
-    Номер телефона:{{phoneNumber}}
+    <span>
+        ФИО:{{firstName}} {{lastName}} {{middleName}}
+        Номер зачётки:{{studentsBookNumber}}
+        Номер телефона:{{phoneNumber}}
     </span>
     {{/group.students}}
 </div>
 <div id="discipline_wrapper">
     {{#group.subjects}}
-    <span>Имя:{{name}}</span>
+    <span>
+        Имя:{{name}}
+    </span>
     {{/group.subjects}}
 </div>
 
