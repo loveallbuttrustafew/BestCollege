@@ -220,3 +220,13 @@ header{
     display: flex;
     justify-content: space-around;
 }
+
+/*-------------------------------СТИЛИ ДЛЯ ИНФЫ О ГРУППЕ-------------------------------------------------------------*/
+#about_group{
+    display: flex;
+    justify-content: space-between;
+}
+#user_toast_form,#discipline_toast_form{
+    display: none;
+};
+
