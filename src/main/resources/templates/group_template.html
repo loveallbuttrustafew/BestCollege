@@ -4,19 +4,40 @@
 </div>
 <div id="about_group">
     <div id="students_wrapper">
-        {{#group.students}}
-        <span>Имя:{{firstName}}
-        Фамилия:{{lastName}}
-        Отчество:{{middleName}}
-        Номер зачётки:{{studentsBookNumber}}
-        Номер телефона:{{phoneNumber}}
-        </span>
-        {{/group.students}}
+        <table style="border: 1px solid">
+            <thead>
+                <tr>
+                    <td>ФИО</td>
+                    <td>Номер зачётки</td>
+                    <td>Номер телефона</td>
+                </tr>
+            </thead>
+            <tbody>
+            {{#group.students}}
+            <tr style="border: 1px solid">
+                <td>{{firstName}} {{lastName}} {{middleName}}</td>
+                <td>{{studentsBookNumber}}</td>
+                <td>{{phoneNumber}}</td>
+            </tr>
+            {{/group.students}}
+            </tbody>
+        </table>
     </div>
     <div id="discipline_wrapper">
+        <table style="border: 1px solid">
+            <thead>
+                <tr>
+                    <td>Название</td>
+                </tr>
+            </thead>
+            <tbody>
         {{#group.subjects}}
-        <span>Имя:{{name}}</span>
+        <tr style="border: 1px solid">
+            <td>{{name}}</td>
+        </tr>
         {{/group.subjects}}
+            </tbody>
+        </table>
     </div>
 </div>
 

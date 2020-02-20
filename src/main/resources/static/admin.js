@@ -1,34 +1,39 @@
 //Выпадающее меню
 let menu = document.getElementById('menu');
 let settings = document.getElementById('settings');
-let points = document.getElementById('some_punct_menu');
+let add_admin_or_teacher = document.getElementById('some_punct_menu');
 let exit = document.getElementById('exit');
 
 menu.addEventListener('mouseover', function () {
     settings.style.backgroundImage = 'url(/img/setting.png)';
-    points.style.backgroundImage = 'url(/img/point.png)';
+    add_admin_or_teacher.style.backgroundImage = 'url(/img/point.png)';
     exit.style.backgroundImage = 'url(/img/exit.png)';
 });
 menu.addEventListener('mouseout', function () {
     settings.style.backgroundImage = '';
-    points.style.backgroundImage = '';
+    add_admin_or_teacher.style.backgroundImage = '';
     exit.style.backgroundImage = '';
 });
 
 // Всплывающая форма
 let add = document.getElementById('add'); // Кнопка для всплывающей формы добавки юзера и группы
 let add_form = document.getElementById('add_toast_form'); // всплывающая форма добавки юзера и группы
-let user_form = document.getElementById('user_form');  // форма для добавки юзера
 let add_group_form = document.getElementById('add_group_wrapper'); // форма для добавки группы
 let type_radio = document.getElementsByName('type_user'); // массив радиобаттонов для выбора типа юзера
 const close_btn = document.getElementById('close_toast_form_button'); // кнопка закрытия формы
+let form_for_admin_or_user = document.getElementById('users_toast_form');//форма добавки админа или препода
 close_btn.addEventListener('click', function () {
     add_form.style.display = 'none';
+});
+add_admin_or_teacher.addEventListener('click',function(){
+    add_form.style.display = 'block';
+    form_for_admin_or_user.style.display = 'block';
+    add_group_form.style.display = 'none';
 });
 add.addEventListener('click', function () {
     add_form.style.display = 'block';
     add_group_form.style.display = 'block';
-    user_form.style.display = 'none';
+    form_for_admin_or_user.style.display = 'none';
 });
 
 
@@ -72,12 +77,19 @@ xhr.addEventListener('readystatechange', function () {
                     all_group_info.style.display = 'none';
                     all_group_info.style.display = 'block';
                     let student_list = document.querySelectorAll('#students_wrapper span');
+                    let discipline_list = document.querySelectorAll('#discipline_wrapper span');
 
+                    for (let i = 0; i < discipline_list.length; i++) {
+                        discipline_list[i].addEventListener('click', function () {
+                            discipline_list[i].style.color = 'blue';
+                        });
+                    }
                     for (let i = 0; i < student_list.length; i++) {
                         student_list[i].addEventListener('click', function () {
                             student_list[i].style.color = 'green';
                         });
-                    } let add_user_form = document.getElementById('add_user_form');
+                    } 
+                    let add_user_form = document.getElementById('add_user_form');
                     let add_discipline_form = document.getElementById('add_discipline_form');
                     let user_toast_form = document.getElementById('user_toast_form');
                     let discipline_toast_form = document.getElementById('discipline_toast_form');
@@ -97,4 +109,5 @@ xhr.addEventListener('readystatechange', function () {
     }
 });
 
+/*---------------------------------------------Всплывающая форма для препода и админа-----------------------------------------*/
 
