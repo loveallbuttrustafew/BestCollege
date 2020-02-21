@@ -111,7 +111,6 @@ public class AdminController {
         } catch (SubjectNotFoundException e) {
             e.printStackTrace();
         }
-        // TODO change subject template
-        return "";
+        return "teacher_list";
     }
 }

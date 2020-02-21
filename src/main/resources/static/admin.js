@@ -25,7 +25,7 @@ let form_for_admin_or_user = document.getElementById('users_toast_form');//фо�
 close_btn.addEventListener('click', function () {
     add_form.style.display = 'none';
 });
-add_admin_or_teacher.addEventListener('click',function(){
+add_admin_or_teacher.addEventListener('click', function () {
     add_form.style.display = 'block';
     form_for_admin_or_user.style.display = 'block';
     add_group_form.style.display = 'none';
@@ -76,38 +76,56 @@ xhr.addEventListener('readystatechange', function () {
                     /*-----------------------------пробую навесить обработчик на студяг-----------------------------------------------------------*/
                     all_group_info.style.display = 'none';
                     all_group_info.style.display = 'block';
-                    let student_list = document.querySelectorAll('#students_wrapper span');
-                    let discipline_list = document.querySelectorAll('#discipline_wrapper span');
+
+                    let student_list = document.querySelectorAll('#students_wrapper table');
+                    let discipline_list = document.querySelectorAll('#discipline_wrapper table');
+                    let add_user_form = document.getElementById('add_user_form');
+                    let add_discipline_form = document.getElementById('add_discipline_form');
+                    let user_toast_form = document.getElementById('user_toast_form');
+                    let discipline_toast_form = document.getElementById('discipline_toast_form');
+                    add_user_form.addEventListener('click', function () {
+                    discipline_toast_form.style.display = 'none';
+                     user_toast_form.style.display = 'block';
+                    });
+                  add_discipline_form.addEventListener('click', function () {
+                    discipline_toast_form.style.display = 'block';
+                   user_toast_form.style.display = 'none';
+                  });
 
                     for (let i = 0; i < discipline_list.length; i++) {
                         discipline_list[i].addEventListener('click', function () {
-                            discipline_list[i].style.color = 'blue';
+                            form_for_admin_or_user.style.display = 'none';
+                            add_group_form.style.display = 'none';
+                            let xhr2 = new XMLHttpRequest();
+                            dispId = document.querySelectorAll('#group_info #about_group #discipline_wrapper table tbody tr');
+                           
+                            dispId.forEach(element => {
+                                element.addEventListener('click', function () {
+                                    xhr2.open('GET', '/admin/subject/info?id=' + element.getAttribute('subject_id'));
+                                    xhr2.send();
+                                    xhr2.addEventListener('readystatechange', function () {
+                                        add_form.innerHTML = this.responseText;
+                                        add_form.style.display = 'block';
+                                    });
+                                });
+                            });
+
                         });
                     }
                     for (let i = 0; i < student_list.length; i++) {
                         student_list[i].addEventListener('click', function () {
                             student_list[i].style.color = 'green';
                         });
-                    } 
-                    let add_user_form = document.getElementById('add_user_form');
-                    let add_discipline_form = document.getElementById('add_discipline_form');
-                    let user_toast_form = document.getElementById('user_toast_form');
-                    let discipline_toast_form = document.getElementById('discipline_toast_form');
-                    add_user_form.addEventListener('click', function () {
-                        discipline_toast_form.style.display = 'none';
-                        user_toast_form.style.display = 'block';
-                    });
-                    add_discipline_form.addEventListener('click', function () {
-                        discipline_toast_form.style.display = 'block';
-                        user_toast_form.style.display = 'none';
-                    });
+                    }
 
 
                 });
             });
         }
+
     }
 });
+
 
 /*---------------------------------------------Всплывающая форма для препода и админа-----------------------------------------*/
 
