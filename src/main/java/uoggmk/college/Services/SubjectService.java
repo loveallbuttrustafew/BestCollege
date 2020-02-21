@@ -1,12 +1,14 @@
 package uoggmk.college.Services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import uoggmk.college.Models.Subject;
 import uoggmk.college.Repositories.SubjectRepository;
-import uoggmk.college.Services.Exceptions.*;
-
-import java.util.Optional;
+import uoggmk.college.Services.Exceptions.SubjectAlreadyExistsException;
+import uoggmk.college.Services.Exceptions.SubjectNotFoundException;
 
 @Service
 public class SubjectService {

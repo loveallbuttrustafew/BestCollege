@@ -1,10 +1,11 @@
 package uoggmk.college.Repositories;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import uoggmk.college.Models.Group;
 
-import java.util.Optional;
+import uoggmk.college.Models.Group;
 
 @Repository
 public interface GroupRepository extends JpaRepository<Group, Long> {
