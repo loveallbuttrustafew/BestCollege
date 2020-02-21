@@ -7,12 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import uoggmk.college.Models.Group;
+import uoggmk.college.Models.Subject;
 import uoggmk.college.Models.Role;
 import uoggmk.college.Models.User;
 import uoggmk.college.Services.Exceptions.GroupAlreadyExistsException;
 import uoggmk.college.Services.Exceptions.GroupNotFoundException;
+import uoggmk.college.Services.Exceptions.SubjectNotFoundException;
 import uoggmk.college.Services.Exceptions.UserAlreadyExistsException;
 import uoggmk.college.Services.GroupService;
+import uoggmk.college.Services.SubjectService;
 import uoggmk.college.Services.UserService;
 
 @Controller
@@ -21,6 +24,8 @@ public class AdminController {
     private UserService userService;
     @Autowired
     private GroupService groupService;
+    @Autowired
+    private SubjectService subjectService;
 
     @GetMapping("/admin")
     public String main() {
@@ -96,5 +101,17 @@ public class AdminController {
             e.printStackTrace();
         }
         return "group_template";
+    }
+
+    @GetMapping("/admin/subject/info")
+    public String subjectInfo(@RequestParam("id") Long id, Model model) {
+        try {
+            Subject subject = subjectService.findById(id);
+            model.addAttribute("subject", subject);
+        } catch (SubjectNotFoundException e) {
+            e.printStackTrace();
+        }
+        // TODO change subject template
+        return "";
     }
 }

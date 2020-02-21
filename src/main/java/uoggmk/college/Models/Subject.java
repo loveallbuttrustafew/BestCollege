@@ -12,7 +12,7 @@ import java.util.Set;
 @Table(name = "subjects")
 @Data
 @EqualsAndHashCode(exclude = {"teachers"})
-@JsonIgnoreProperties(value = {"group", "teachers"})
+@JsonIgnoreProperties(value = {"group"})
 @ToString
 public class Subject {
     @Id

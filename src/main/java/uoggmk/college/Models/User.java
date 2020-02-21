@@ -14,7 +14,7 @@ import java.util.Set;
 @JsonIgnoreProperties(value = {"group", "subjects"})
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true)
     private String username;
