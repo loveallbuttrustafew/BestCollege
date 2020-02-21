@@ -2,6 +2,7 @@ package uoggmk.college.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import uoggmk.college.Models.User;
 import uoggmk.college.Repositories.UserRepository;
 import uoggmk.college.Services.Exceptions.UserAlreadyExistsException;
