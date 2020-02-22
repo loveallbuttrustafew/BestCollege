@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import uoggmk.college.Models.Group;
 import uoggmk.college.Models.Role;
+import uoggmk.college.Models.Subject;
 import uoggmk.college.Models.User;
 import uoggmk.college.Services.GroupService;
+import uoggmk.college.Services.SubjectService;
 import uoggmk.college.Services.UserService;
 import uoggmk.college.Services.Exceptions.GroupNotFoundException;
+import uoggmk.college.Services.Exceptions.SubjectNotFoundException;
+import uoggmk.college.Services.Exceptions.UserNotFoundException;
 
 @RestController
 public class AdminRestController {
@@ -20,9 +24,11 @@ public class AdminRestController {
     private GroupService groupService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private SubjectService subjectService;
 
     @GetMapping("/admin/group/getall")
-    public List<Group> getall(){
+    public List<Group> getall() {
         return groupService.getAllGroups();
     }
 
@@ -35,4 +41,5 @@ public class AdminRestController {
     public List<User> getTeachers() {
         return userService.findByRole(Role.TEACHER);
     }
+
 }

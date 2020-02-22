@@ -18,6 +18,7 @@ import uoggmk.college.Services.Exceptions.GroupAlreadyExistsException;
 import uoggmk.college.Services.Exceptions.GroupNotFoundException;
 import uoggmk.college.Services.Exceptions.SubjectNotFoundException;
 import uoggmk.college.Services.Exceptions.UserAlreadyExistsException;
+import uoggmk.college.Services.Exceptions.UserNotFoundException;
 
 @Controller
 public class AdminController {
@@ -113,5 +114,15 @@ public class AdminController {
             e.printStackTrace();
         }
         return "teacher_list";
+    }
+
+    @GetMapping("/admin/subject/attache/teacher")
+    public String attacheTeacher(@RequestParam("teacherid") Long teacherId, @RequestParam("subjectid") Long subjectId) {
+        try {
+            subjectService.attacheTeacher(subjectId, teacherId);
+        } catch (SubjectNotFoundException | UserNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/admin";
     }
 }
