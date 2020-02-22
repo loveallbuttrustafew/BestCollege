@@ -120,18 +120,37 @@ xhr.addEventListener('readystatechange', function () {
                     let add_discipline_form = document.getElementById('add_discipline_form');
                     let user_toast_form = document.getElementById('user_toast_form');
                     let discipline_toast_form = document.getElementById('discipline_toast_form');
+                    let attache_container = document.getElementById('attache_container');
                     let attache_teacher_btn = document.getElementsByClassName('attache_teacher');
-                    /*
-                    attache_teacher_btn.addEventListener('click',function(){
+                
+                   for(let i=0;i<attache_teacher_btn.length;i++){
+                        attache_teacher_btn[i].addEventListener('click',function(){
                         let xhr3 = new XMLHttpRequest();
                         xhr3.open('GET','/admin/users/get/teachers');
                         xhr3.send();
                         xhr3.addEventListener('readystatechange',function(){
-                            add_form.innerHTML = JSON.parse(xhr3.responseText)["firstName"];
-                            add_form.innerHTML = JSON.parse(xhr3.responseText)["midleName"];
-                            add_form.innerHTML = JSON.parse(xhr3.responseText)["lastName"];
+                            attache_container.innerHTML =`
+                            <select name="teacherid" id="select_teacher">
+
+                            </select>
+                        <input type="submit" value="Привязать">
+                            `;
+                            let select_teacher = document.getElementById('select_teacher');
+                            console.log(JSON.parse(xhr3.responseText));
+                                JSON.parse(xhr3.responseText).forEach(element => {
+                                    let prepod = document.createElement('option');
+                                prepod.textContent = element['firstName'];  
+                                prepod.textContent = prepod.textContent + element['middleName'];  
+                                prepod.textContent = prepod.textContent + element['lastName']; 
+                                prepod.value = element["id"]; 
+                                select_teacher.appendChild(prepod);
+                                });
                         });
-                    });*/
+                    });
+                   }
+                      
+                 
+           
                     add_user_form.addEventListener('click', function () {
                         discipline_toast_form.style.display = 'none';
                         user_toast_form.style.display = 'block';
@@ -144,7 +163,7 @@ xhr.addEventListener('readystatechange', function () {
                     for (let i = 0; i < discipline_list.length; i++) {
                         discipline_list[i].addEventListener('click', function () {
                             let xhr2 = new XMLHttpRequest();
-                            dispId = document.querySelectorAll('#group_info #about_group #discipline_wrapper table tbody tr');
+                            dispId = document.querySelectorAll('#group_info #about_group #discipline_wrapper table tbody tr td');
 
                             dispId.forEach(element => {
                                 element.addEventListener('click', function () {
@@ -157,10 +176,7 @@ xhr.addEventListener('readystatechange', function () {
                                         all_group_info.style.display = 'block';
                                         add_form.style.display = 'block';
 
-                                        close_btn2 = document.getElementById('close_toast_button');
-                                        close_btn2.addEventListener('click', function () {
-                                            add_form.style.display = 'none';
-                                        });
+                                       
                                     });
                                 });
                             });
