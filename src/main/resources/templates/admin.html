@@ -53,10 +53,55 @@
 
     <!-------------------------------------НАЧАЛО БЛОКА ВСПЛЫВАЮЩЕЙ ФОРМЫ------------------------------------------------------------------------->
     <div id="add_toast_form">
-       
-     </div>
-   
+        <!-------Кнопка закрытия формы------------>
+        <div id="close_toast_form_button">
+            <!--Кнопка закрыть-->
+        </div>
 
+        <!-------------------НАЧАЛО ФОРМЫ ДЛЯ СОЗДАНИЯ ГРУППЫ-и админа с преподом-------------------------------------------->
+
+        <form action="/admin/user/add" method="POST" id="users_toast_form">
+            <input name="_csrf" type="hidden" value="{{_csrf.token}}" />
+            <div id="add_user_wrapper">
+                <div id="users">
+                    <div> Преподаватель<input type="radio" name="typeuser" value="TEACHER">Администратор<input
+                            type="radio" name="typeuser" value="ADMIN"></div>
+                    <div><input type="text" name="firstname" placeholder="Имя"></div>
+                    <div><input type="text" name="secondname" placeholder="Фамилия"></div>
+                    <div><input type="text" name="lastname" placeholder="Отчество"></div>
+                    <div><input type="text" name="phonenumber" placeholder="Номер телефона"></div>
+                    <div><input type="text" name="username" placeholder="Логин"></div>
+                    <div><input type="password" name="password" placeholder="Пароль"></div>
+                </div>
+                <div id="sub_users">
+                    <div><input type="submit" value="Добавить"></div>
+                </div>
+            </div>
+        </form>
+        <!----------------------------------Форма для добавки группы---------------------------------------------------------------->
+        <form action="/admin/group/add" method="POST">
+            <input name="_csrf" type="hidden" value="{{_csrf.token}}" />
+            <div id="add_group_wrapper">
+                <div id="add_group_container">
+                    <div id="group_name">
+                        <input type="text" name="groupname" placeholder="Наименование группы:">
+                    </div>
+
+                    <div>
+                        <input type="text" name="groupcourse" id="course" placeholder="Курс:">
+                    </div>
+
+                    <div id="group_number">
+                        <input type="text" name="groupnumber" placeholder="Номер группы:">
+                    </div>
+                    <div id="sub_group">
+                            <input type="submit" value="Добавить">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+   
     <!----------------------------------------------------------------------------------------------->
     <script src="admin.js"></script>
 </body>

@@ -33,7 +33,10 @@
             <tbody>
         {{#group.subjects}}
         <tr style="border: 1px solid" subject_id="{{id}}">
-            <td>{{name}}</td>
+            
+            <td>{{name}}
+                <button class="attache_teacher" subject_id="{{id}}" >Привязать преподавателя</button>
+            </td>
         </tr>
         {{/group.subjects}}
             </tbody>
