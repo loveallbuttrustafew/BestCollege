@@ -1,6 +1,7 @@
 package uoggmk.college.Services;
 
 import java.util.List;
+import java.util.Set;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import uoggmk.college.Models.User;
 import uoggmk.college.Models.Role;
+import uoggmk.college.Models.Subject;
 import uoggmk.college.Repositories.UserRepository;
 import uoggmk.college.Services.Exceptions.UserAlreadyExistsException;
 import uoggmk.college.Services.Exceptions.UserNotFoundException;
@@ -42,5 +44,14 @@ public class UserService {
 
     public List<User> findByRole(Role role) {
         return userRepository.findByRole(role);
+    }
+
+    public Set<Subject> getAllSubjects(Long userId) {
+        try {
+            User user = findById(userId);
+            return user.getSubjects();
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

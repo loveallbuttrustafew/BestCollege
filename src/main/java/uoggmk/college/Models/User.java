@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -25,7 +27,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(exclude = {"group", "subjects"})
 @JsonIgnoreProperties(value = {"group", "subjects"})
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
