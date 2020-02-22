@@ -17,9 +17,10 @@ body{
 }
 input{
     min-height: 40px;
+    border: 1px solid black;
     border-radius: 10px;
     outline: none;
-    padding-left: 10px;
+    padding: 8px 15px;
 }
 /*-----------------------------СТИЛИ ДЛЯ HEADER-----------------------------------------------------------------------------------------------------*/
 header{
@@ -55,9 +56,9 @@ header{
     margin-left: 110px;
 }
 #add:hover{
-    border: 2px solid  #F3FD00;
+    border: 2px solid  rgba( 255, 255, 255, 0.8);
     font-size: 17.1px;
-    color:  #F3FD00;
+    color:  rgba( 255, 255, 255, 0.8);;
     border-radius: 3px;
 }
 #search{
@@ -86,7 +87,6 @@ header{
     display: flex;
     justify-content: space-between;
 }
-/*-----------------------------------------------------------------------------------------------------------------------------------------*/
 #menu{
     background-image: url(/img/menu-burger.png);
     background-repeat: no-repeat;
@@ -137,7 +137,7 @@ header{
    transition: 0.2s all ease;
 }
 #groups ul li:hover{
-    border: 2px solid  #F3FD00;
+    border: 2px solid  #7908AA;
 }
 #groups ul span{
     width: 100px;
@@ -170,42 +170,51 @@ header{
 }
    
 
-/*------------------------------------СТИЛИ ДЛЯ ДОБАВКИ ФОРМЫ ЮЗЕРА---------------------------------------------------------------------------------*/
-#user_form{
-    display: none;
-}
-#add_choice{
-    padding-top: 40px;
+/*------------------------------------СТИЛИ ДЛЯ ДОБАВКИ ФОРМЫ Студента---------------------------------------------------------------------------------*/
+#user-discipline_wrapper{
     display: flex;
     justify-content: space-around;
 }
-#user_type_wrapper{
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-around;
+#user-discipline_wrapper div{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 16px;
+    margin: 10px;
+    transition: 0.2s all ease;
 }
-#names_wrapper{
-    padding-top: 20px;
-    text-align: center;
+#user-discipline_wrapper div:hover{
+    border: 1px solid #7908AA;
+    background-color: #7908AA;
+    color: white;
+    cursor: pointer;
 }
-#login_pass{
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-around;
+#add_subject_wrapper,#student_form_container{
+    padding: 10px;
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 20px auto;
 }
-#phone_number,#student_book,#sub,#sub_group{
-    padding-top: 20px;
-    text-align: center;
+#add_subject_wrapper{
+    width: 40%;
 }
-/*--------СТИЛИ ДЛЯ ФОРМЫ ДОБАВКИ ГРУППЫ-----------------------------*/
+/*--------СТИЛИ ДЛЯ ФОРМЫ ДОБАВКИ ГРУППЫ С перечечением формы добавки студента-----------------------------*/
 #add_group_wrapper{
     padding-top: 50px;
     display: none;
 }
-#group_name,#course,#group_number{
-    padding-top:20px;
-    text-align: center;
+#add_group_container,#student_form_container,#add_subject_wrapper,#users{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+#add_group_container div,#student_form_container div,#add_subject_wrapper div,#users div{
+  padding-bottom: 20px;
+}
+
+
 /*-----Кнопка закрыть форму ---------------------------------------------------------------------------------------*/
 
     #close_toast_form_button{
@@ -219,18 +228,29 @@ header{
         background-size: contain;
         background-repeat: no-repeat;
     }
-/*----------------------------------------------------------------------------------------------------------------------*/
-#user-discipline_wrapper{
-    display: flex;
-    justify-content: space-around;
-}
+    #close_toast_button{
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background-image: url(/img/close.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+/*------------------------------------------------------------------------------------------------------------------*/
+
 
 /*-------------------------------СТИЛИ ДЛЯ ИНФЫ О ГРУППЕ-------------------------------------------------------------*/
 #about_group{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 #user_toast_form,#discipline_toast_form{
     display: none;
 };
-
+#user-discipline_wrapper{
+    display: flex;
+    justify-content: space-around;
+}

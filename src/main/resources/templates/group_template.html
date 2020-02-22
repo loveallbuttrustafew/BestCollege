@@ -1,5 +1,5 @@
 <div id="user-discipline_wrapper">
-    <div id="add_user_form">Добавить пользователя</div>
+    <div id="add_user_form">Добавить учащегося</div>
     <div id="add_discipline_form">Добавить дисциплину</div>
 </div>
 <div id="about_group">
@@ -48,20 +48,20 @@
     <input name="groupid" type="hidden" value="{{group.id}}"/>
     <input name="typeuser" type="hidden" value="STUDENT"/>
     <div id="add_user_wrapper">
-        <div id="group_name">
-            <div>Имя:<input type="text" name="firstname" placeholder="Имя"></div>
-            <div>Фамилия:<input type="text" name="secondname" placeholder="Фамилия"></div>
-            <div>Отчество:<input type="text" name="lastname" placeholder="Отчество"></div>
-            <div>Номер зачётки:<input type="text" name="studentbook" placeholder="Номер зачётки:"></div>
-            <div>Номер телефона:<input type="text" name="phonenumber" placeholder="Номер телефона"></div>
-            <div>Логин:<input type="text" name="username" placeholder="Логин"></div>
-            <div>Пароль:<input type="password" name="password" placeholder="Пароль"></div>
-        </div>
+        <div id="student_form_container">
+            <div><input type="text" name="firstname" placeholder="Имя">
+            <input type="text" name="secondname" placeholder="Фамилия">
+            <input type="text" name="lastname" placeholder="Отчество"></div>
+            <div><input type="text" name="studentbook" placeholder="Номер зачётки:"></div>
+            <div><input type="text" name="phonenumber" placeholder="Номер телефона"></div>
+            <div><input type="text" name="username" placeholder="Логин"></div>
+            <div><input type="password" name="password" placeholder="Пароль"></div>
             <div id="sub_user">
-                <div><input type="submit" value="Добавить"></div>
+                <input type="submit" value="Добавить">
             </div>
         </div>
     </div>
+ </div>
 </form>
 
 <!--------------------------------------------------------------->
@@ -70,7 +70,7 @@
     <input name="groupid" type="hidden" value="{{group.id}}"/>
     <div id="add_subject_wrapper">
         <div id="dicsipline_name">
-            <div>Название дисциплины:<input type="text" name="subjectname" placeholder="Название дисциплины"></div>
+            <div><input type="text" name="subjectname" placeholder="Название дисциплины"></div>
         </div>
             <div id="sub_discipline">
                 <div><input type="submit" value="Добавить"></div>

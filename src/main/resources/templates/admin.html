@@ -21,84 +21,41 @@
             <input type="text" placeholder="Поиск">
         </div>
     </header>
+    <!--------------------------------------------ВСПЛЫВАЮЩЕЕ МЕНЮ---------------------------------------------------------------------------->
     <div id="content_wrapper">
-        <!--------------------------------------------ВСПЛЫВАЮЩЕЕ МЕНЮ---------------------------------------------------------------------------->
-    <div id="wrapper_menu">
-        <div id="menu">
-            <div id="some_punct_menu">
+        <div id="wrapper_menu">
+            <div id="menu">
+                <div id="some_punct_menu">
 
-            </div>
-            <div id="settings">
+                </div>
+                <div id="settings">
 
-            </div>
-            <div id="exit">
+                </div>
+                <div id="exit">
 
+                </div>
             </div>
+        </div>
+
+        <!---------------------------------СПИСОК-ГРУПП------------------------------------------------------------------------------------------>
+        <div id="groups">
+            <div>
+                <ul id="group_list">
+
+                </ul>
+            </div>
+        </div>
+        <!---------------------------------------ИНФОРМАЦИЯ О ГРУППЕ-------------------------------------------------------------------------------->
+        <div id="group_info">
+
         </div>
     </div>
 
-    <!---------------------------------СПИСОК-ГРУПП------------------------------------------------------------------------------------------>
-    <div id="groups">
-        <div>
-            <ul id="group_list">
-
-            </ul>
-        </div>
-    </div>
-    <!---------------------------------------ИНФОРМАЦИЯ О ГРУППЕ-------------------------------------------------------------------------------->
-    <div id="group_info">
-
-    </div>
-    </div>
-    
     <!-------------------------------------НАЧАЛО БЛОКА ВСПЛЫВАЮЩЕЙ ФОРМЫ------------------------------------------------------------------------->
     <div id="add_toast_form">
-        <!-------Кнопка закрытия формы------------>
-        <div id="close_toast_form_button">
-        </div>
-
-        <!-------------------НАЧАЛО ФОРМЫ ДЛЯ СОЗДАНИЯ ГРУППЫ-и админа с преподом-------------------------------------------->
-
-        <form action="/admin/user/add" method="POST" id="users_toast_form">
-            <input name="_csrf" type="hidden" value="{{_csrf.token}}" />
-            <div id="add_user_wrapper">
-                <div id="users">
-                    <div> Преподаватель<input type="radio" name="typeuser" value="TEACHER">Администратор<input
-                            type="radio" name="typeuser" value="ADMIN"></div>
-                    <div>Имя:<input type="text" name="firstname" placeholder="Имя"></div>
-                    <div>Фамилия:<input type="text" name="secondname" placeholder="Фамилия"></div>
-                    <div>Отчество:<input type="text" name="lastname" placeholder="Отчество"></div>
-                    <div>Номер телефона:<input type="text" name="phonenumber" placeholder="Номер телефона"></div>
-                    <div>Логин:<input type="text" name="username" placeholder="Логин"></div>
-                    <div>Пароль:<input type="password" name="password" placeholder="Пароль"></div>
-                </div>
-                <div id="sub_users">
-                    <div><input type="submit" value="Добавить"></div>
-                </div>
-            </div>
-        </form>
-        <!----------------------------------Форма для добавки группы---------------------------------------------------------------->
-        <form action="/admin/group/add" method="POST">
-            <input name="_csrf" type="hidden" value="{{_csrf.token}}" />
-            <div id="add_group_wrapper">
-                <div id="group_name">
-                    <div>Наименование группы:<input type="text" name="groupname"></div>
-                </div>
-                <div>
-                    Курс:
-                    <div><input type="text" name="groupcourse" id="course"></div>
-
-                    <div id="group_number">
-                        <div>Номер группы:<input type="text" name="groupnumber"></div>
-                    </div>
-                    <div id="sub_group">
-                        <div><input type="submit" value="Добавить"></div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-
+       
+     </div>
+   
 
     <!----------------------------------------------------------------------------------------------->
     <script src="admin.js"></script>
