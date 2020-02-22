@@ -71,6 +71,14 @@
             <input name="_csrf" type="hidden" value="{{_csrf.token}}" />
             <div id="fields_groups"></div>
         </form>
+        <!---------ФОРМА ПРИВЯЗКИ ПРЕПОДА К ПРЕДМЕНТУ--------------->
+        <form method="POST" action="/admin/subject/attache/teacher">
+            <input name="_csrf" type="hidden" value="{{_csrf.token}}" />
+            <input name="subjectid" type="hidden" value="" />
+            <div id="attache_container">
+                
+            </div>
+        </form>
     </div>
    
     <!----------------------------------------------------------------------------------------------->
