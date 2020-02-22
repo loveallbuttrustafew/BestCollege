@@ -121,6 +121,7 @@ xhr.addEventListener('readystatechange', function () {
                     let user_toast_form = document.getElementById('user_toast_form');
                     let discipline_toast_form = document.getElementById('discipline_toast_form');
                     let attache_teacher_btn = document.getElementsByClassName('attache_teacher');
+                    /*
                     attache_teacher_btn.addEventListener('click',function(){
                         let xhr3 = new XMLHttpRequest();
                         xhr3.open('GET','/admin/users/get/teachers');
@@ -130,7 +131,7 @@ xhr.addEventListener('readystatechange', function () {
                             add_form.innerHTML = JSON.parse(xhr3.responseText)["midleName"];
                             add_form.innerHTML = JSON.parse(xhr3.responseText)["lastName"];
                         });
-                    });
+                    });*/
                     add_user_form.addEventListener('click', function () {
                         discipline_toast_form.style.display = 'none';
                         user_toast_form.style.display = 'block';
