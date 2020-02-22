@@ -18,15 +18,17 @@ menu.addEventListener('mouseout', function () {
 // Всплывающая форма
 let add = document.getElementById('add'); // Кнопка для всплывающей формы добавки юзера и группы
 let add_form = document.getElementById('add_toast_form'); // всплывающая форма добавки юзера и группы
+let fields_users = document.getElementById('fields_users');
+let fields_groups = document.getElementById('fields_groups');
+let close_btn = document.getElementById('close_toast_form_button');
+close_btn.addEventListener('click',function(){
+    add_form.style.display = 'none';
+    add_group_form.style.display = 'none';
+    form_for_admin_or_user.style.display = 'none';
+});
 add_admin_or_teacher.addEventListener('click', function () {
     add_form.style.display = 'block';
-    add_form.innerHTML = `
-    <!-------Кнопка закрытия формы------------>
-    <div id="close_toast_form_button">
-        <!--Кнопка закрыть-->
-    </div>
-    <form action="/admin/user/add" method="POST" id="users_toast_form">
-    <input name="_csrf" type="hidden" value="{{_csrf.token}}" />
+    fields_users.innerHTML = `
     <div id="add_user_wrapper">
         <div id="users">
             <div> Преподаватель<input type="radio" name="typeuser" value="TEACHER">Администратор<input
@@ -41,24 +43,14 @@ add_admin_or_teacher.addEventListener('click', function () {
             <input type="submit" value="Добавить">
         </div>
     </div>
-</form>
     `;
-    let close_btn = document.getElementById('close_toast_form_button'); // кнопка закрытия формы
-    close_btn.addEventListener('click', function () {
-        add_form.style.display = 'none';
-    });
     let form_for_admin_or_user = document.getElementById('users_toast_form');//форма добавки админа или препода
     form_for_admin_or_user.style.display = 'block';
 });
 add.addEventListener('click', function () {
     add_form.style.display = 'block';
-    add_form.innerHTML = `
-    <!-------Кнопка закрытия формы------------>
-    <div id="close_toast_form_button">
-        <!--Кнопка закрыть-->
-    </div>
-    <form action="/admin/group/add" method="POST">
-            <input name="_csrf" type="hidden" value="{{_csrf.token}}" />
+    fields_groups.innerHTML = `
+ 
             <div id="add_group_wrapper">
                 <div id="add_group_container">
                     <div id="group_name">
@@ -77,12 +69,8 @@ add.addEventListener('click', function () {
                     </div>
                 </div>
             </div>
-        </form>
+
     `;
-    let close_btn = document.getElementById('close_toast_form_button'); // кнопка закрытия формы
-    close_btn.addEventListener('click', function () {
-        add_form.style.display = 'none';
-    });
     let add_group_form = document.getElementById('add_group_wrapper'); // форма для добавки группы
     add_group_form.style.display = 'block';
 });
