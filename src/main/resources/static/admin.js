@@ -16,11 +16,13 @@ menu.addEventListener('mouseout', function () {
 });
 
 // Всплывающая форма
+let teacher_list_wrapper = document.getElementById('teacher_list_wrapper');
 let add = document.getElementById('add'); // Кнопка для всплывающей формы добавки юзера и группы
 let add_form = document.getElementById('add_toast_form'); // всплывающая форма добавки юзера и группы
 let fields_users = document.getElementById('fields_users');
 let fields_groups = document.getElementById('fields_groups');
 let close_btn = document.getElementById('close_toast_form_button');
+let subid = document.getElementById('subid');
 close_btn.addEventListener('click',function(){
     add_form.style.display = 'none';
 });
@@ -100,10 +102,6 @@ xhr.addEventListener('readystatechange', function () {
                 };
                 this.classList.add('open');
 
-
-
-
-
                 let xhr1 = new XMLHttpRequest();
                 xhr1.open('GET', '/admin/group/info?id=' + JSON.parse(xhr.responseText)[i]["id"]);// подготовка запроса для отправки на сервер
                 xhr1.send();
@@ -122,9 +120,11 @@ xhr.addEventListener('readystatechange', function () {
                     let discipline_toast_form = document.getElementById('discipline_toast_form');
                     let attache_container = document.getElementById('attache_container');
                     let attache_teacher_btn = document.getElementsByClassName('attache_teacher');
+                    console.log(attache_teacher_btn);
                 
                    for(let i=0;i<attache_teacher_btn.length;i++){
-                        attache_teacher_btn[i].addEventListener('click',function(){
+                        attache_teacher_btn[i].addEventListener('click',function(event){
+                        subid.value = event.target.getAttribute('subject_id');
                         let xhr3 = new XMLHttpRequest();
                         xhr3.open('GET','/admin/users/get/teachers');
                         xhr3.send();
@@ -136,7 +136,6 @@ xhr.addEventListener('readystatechange', function () {
                         <input type="submit" value="Привязать">
                             `;
                             let select_teacher = document.getElementById('select_teacher');
-                            console.log(JSON.parse(xhr3.responseText));
                                 JSON.parse(xhr3.responseText).forEach(element => {
                                     let prepod = document.createElement('option');
                                 prepod.textContent = element['firstName'];  
@@ -144,6 +143,7 @@ xhr.addEventListener('readystatechange', function () {
                                 prepod.textContent = prepod.textContent + element['lastName']; 
                                 prepod.value = element["id"]; 
                                 select_teacher.appendChild(prepod);
+                            
                                 });
                         });
                     });
@@ -159,21 +159,20 @@ xhr.addEventListener('readystatechange', function () {
                         discipline_toast_form.style.display = 'block';
                         user_toast_form.style.display = 'none';
                     });
-
+ 
+                    /*-------------------Обработчик нажатия на дисциплину---------------------------------------------------*/
                     for (let i = 0; i < discipline_list.length; i++) {
                         discipline_list[i].addEventListener('click', function () {
                             let xhr2 = new XMLHttpRequest();
-                            dispId = document.querySelectorAll('#group_info #about_group #discipline_wrapper table tbody tr td');
-
+                            dispId = document.querySelectorAll('#group_info #about_group #discipline_wrapper table tbody tr td span');
                             dispId.forEach(element => {
                                 element.addEventListener('click', function () {
+                                    console.log(element.getAttribute('subject_id'));
                                     xhr2.open('GET', '/admin/subject/info?id=' + element.getAttribute('subject_id'));
                                     xhr2.send();
                                     xhr2.addEventListener('readystatechange', function () {
 
-                                        add_form.innerHTML = this.responseText;
-                                        all_group_info.style.display = 'none';
-                                        all_group_info.style.display = 'block';
+                                        teacher_list_wrapper.innerHTML = this.responseText;
                                         add_form.style.display = 'block';
 
                                        
@@ -183,6 +182,7 @@ xhr.addEventListener('readystatechange', function () {
 
                         });
                     }
+                    /*-----------------------------------------------------------------------------------*/
                     for (let i = 0; i < student_list.length; i++) {
                         student_list[i].addEventListener('click', function () {
                             student_list[i].style.color = 'green';
