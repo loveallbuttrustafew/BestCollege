@@ -23,8 +23,6 @@ let fields_groups = document.getElementById('fields_groups');
 let close_btn = document.getElementById('close_toast_form_button');
 close_btn.addEventListener('click',function(){
     add_form.style.display = 'none';
-    add_group_form.style.display = 'none';
-    form_for_admin_or_user.style.display = 'none';
 });
 add_admin_or_teacher.addEventListener('click', function () {
     add_form.style.display = 'block';
