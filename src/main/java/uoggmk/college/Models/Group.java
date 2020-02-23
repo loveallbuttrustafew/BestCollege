@@ -1,8 +1,10 @@
 package uoggmk.college.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Tolerate;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -10,6 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "c_groups")
 @Data
+@Builder
 @EqualsAndHashCode(exclude = {"students", "subjects"})
 @JsonIgnoreProperties(value = {"students", "subjects"})
 public class Group {
@@ -26,4 +29,7 @@ public class Group {
     private Set<User> students;
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
     private Set<Subject> subjects;
+
+    @Tolerate
+    public Group(){ }
 }

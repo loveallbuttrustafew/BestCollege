@@ -1,5 +1,7 @@
 package uoggmk.college.Controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +18,8 @@ import java.util.List;
 
 @RestController
 public class AdminRestController {
+    Logger logger = LoggerFactory.getLogger(AdminRestController.class);
+
     @Autowired
     private GroupService groupService;
     @Autowired
@@ -24,17 +28,22 @@ public class AdminRestController {
     private SubjectService subjectService;
 
     @GetMapping("/admin/group/getall")
-    public List<Group> getall() {
+    public List<Group> getAllGroups() {
         return groupService.getAllGroups();
     }
 
     @GetMapping("/admin/group/get")
-    public Group groupAdd(@RequestParam("groupid") Long id) throws GroupNotFoundException {
-        return groupService.getGroupById(id);
+    public Group getGroupById(@RequestParam("groupid") Long id){
+        try {
+            return groupService.getGroupById(id);
+        } catch (GroupNotFoundException e) {
+            logger.error("[EXCEPTION] GroupNotFound while get group by id (" + id + ")");
+        }
+        return null;
     }
 
     @GetMapping("/admin/users/get/teachers")
-    public List<User> getTeachers() {
+    public List<User> getAllTeachers() {
         return userService.findByRole(Role.TEACHER);
     }
 
