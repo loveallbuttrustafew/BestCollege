@@ -19,14 +19,15 @@ menu.addEventListener('mouseout', function () {
 let discipline_list = document.querySelectorAll('#discipline_list li');
 let discp_info = document.getElementById('info');
 let sub_value = document.getElementById('sub_value');
+let labs_list = document.getElementById('labs_list');
 discipline_list.forEach(element => {
-    element.addEventListener('click',get_info);
+    element.addEventListener('click', get_info);
 });
-function get_info(){
-    for(let i = 0;i<discipline_list.length;i++){
-        if(discipline_list[i].classList.contains('select')){
+function get_info() {
+    for (let i = 0; i < discipline_list.length; i++) {
+        if (discipline_list[i].classList.contains('select')) {
             discipline_list[i].classList.remove('select');
-            discipline_list[i].style.backgroundColor = 'rgba(255,255,255,0.8)';
+            discipline_list[i].style.backgroundColor = '';
             discipline_list[i].style.color = '#000000';
         }
     }
@@ -34,6 +35,17 @@ function get_info(){
     this.style.color = '#ffffff';
     this.style.backgroundColor = '#7908AA';
     let info = this.textContent;
-    discp_info.innerHTML = "<div><h2>" + info + "</h2></div>"; 
+    discp_info.innerHTML = "<div><h2>" + info + "</h2></div>";
     sub_value.value = this.getAttribute('subjectid');
+    console.log(sub_value.value);
+    get_labs(sub_value.value);
 };
+
+function get_labs(valll) {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/teacher/laboratory/get?subjectid=' + valll);
+    xhr.send();
+    xhr.addEventListener('readystatechange',function(){
+        labs_list.innerHTML = xhr.responseText;
+    });
+}
