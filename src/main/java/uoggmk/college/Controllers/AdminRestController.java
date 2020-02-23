@@ -1,22 +1,18 @@
 package uoggmk.college.Controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import uoggmk.college.Models.Group;
 import uoggmk.college.Models.Role;
-import uoggmk.college.Models.Subject;
 import uoggmk.college.Models.User;
+import uoggmk.college.Services.Exceptions.GroupNotFoundException;
 import uoggmk.college.Services.GroupService;
 import uoggmk.college.Services.SubjectService;
 import uoggmk.college.Services.UserService;
-import uoggmk.college.Services.Exceptions.GroupNotFoundException;
-import uoggmk.college.Services.Exceptions.SubjectNotFoundException;
-import uoggmk.college.Services.Exceptions.UserNotFoundException;
+
+import java.util.List;
 
 @RestController
 public class AdminRestController {
