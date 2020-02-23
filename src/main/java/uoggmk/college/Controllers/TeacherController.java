@@ -3,14 +3,15 @@ package uoggmk.college.Controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import sun.management.FileSystem;
 import uoggmk.college.Models.Subject;
 import uoggmk.college.Services.Exceptions.LaboratoryAlreadyExistsException;
 import uoggmk.college.Services.Exceptions.StorageException;
@@ -20,11 +21,17 @@ import uoggmk.college.Services.LaboratoryService;
 import uoggmk.college.Services.StorageService;
 import uoggmk.college.Services.UserService;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
+import java.io.*;
 import java.util.Set;
 
 @Controller
 public class TeacherController {
     Logger logger = LoggerFactory.getLogger(TeacherController.class);
+
+    @Value("${upload.path}")
+    private String path;
 
     @Autowired
     private UserService userService;
@@ -66,5 +73,11 @@ public class TeacherController {
     public String getLaboratory(@RequestParam("subjectid") Long subjectId, Model model) {
         model.addAttribute("laboratories", laboratoryService.getAllLaboratories(subjectId));
         return "labs";
+    }
+
+    @GetMapping(value = "/teacher/download/{file_name}")
+    @ResponseBody
+    public FileSystemResource downloadLaboratory(@PathVariable("file_name") String name) {
+        return new FileSystemResource(new File(path + "/" + name));
     }
 }
