@@ -45,12 +45,8 @@ public class UserService {
         return userRepository.findByRole(role);
     }
 
-    public Set<Subject> getAllSubjects(Long userId) {
-        try {
+    public Set<Subject> getAllSubjects(Long userId) throws UserNotFoundException {
             User user = findById(userId);
             return user.getSubjects();
-        } catch (UserNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 }

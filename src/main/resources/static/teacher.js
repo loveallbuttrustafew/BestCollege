@@ -13,3 +13,4 @@ menu.addEventListener('mouseout', function () {
     add_admin_or_teacher.style.backgroundImage = '';
     exit.style.backgroundImage = '';
 });
+

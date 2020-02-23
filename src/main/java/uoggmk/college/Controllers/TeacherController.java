@@ -25,10 +25,10 @@ public class TeacherController {
                 String username = auth.getName();
                 Set<Subject> subjects = userService.getAllSubjects(userService.findByUsername(username).getId());
                 model.addAttribute("subjects", subjects);
-                return "teacher";
+
             }
         } catch (UserNotFoundException e) {
             e.printStackTrace();
-        }
+        }return "teacher";
     }
 }
