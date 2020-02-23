@@ -15,6 +15,7 @@ import uoggmk.college.Services.SubjectService;
 import uoggmk.college.Services.UserService;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class AdminRestController {
@@ -43,7 +44,7 @@ public class AdminRestController {
     }
 
     @GetMapping("/admin/users/get/teachers")
-    public List<User> getAllTeachers() {
+    public Set<User> getAllTeachers() {
         return userService.findByRole(Role.TEACHER);
     }
 

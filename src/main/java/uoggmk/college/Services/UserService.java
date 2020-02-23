@@ -9,7 +9,6 @@ import uoggmk.college.Repositories.UserRepository;
 import uoggmk.college.Services.Exceptions.UserAlreadyExistsException;
 import uoggmk.college.Services.Exceptions.UserNotFoundException;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -41,7 +40,7 @@ public class UserService {
         }
     }
 
-    public List<User> findByRole(Role role) {
+    public Set<User> findByRole(Role role) {
         return userRepository.findByRole(role);
     }
 
