@@ -11,8 +11,8 @@ import java.util.Set;
 @Entity
 @Table(name = "subjects")
 @Data
-@EqualsAndHashCode(exclude = {"teachers"})
-@JsonIgnoreProperties(value = {"group"})
+@EqualsAndHashCode(exclude = {"teachers", "laboratories"})
+@JsonIgnoreProperties(value = {"group", "laboratories"})
 @ToString
 public class Subject {
     @Id
@@ -29,4 +29,6 @@ public class Subject {
             inverseJoinColumns = @JoinColumn(name = "subjectId")
     )
     private Set<User> teachers;
+    @OneToMany(mappedBy = "subject",fetch = FetchType.LAZY)
+    private Set<Laboratory> laboratories;
 }

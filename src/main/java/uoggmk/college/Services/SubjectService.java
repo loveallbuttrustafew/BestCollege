@@ -37,4 +37,8 @@ public class SubjectService {
             subject.getTeachers().add(user);
             subjectRepository.save(subject);
     }
+
+    public void update(Subject subject) {
+        subjectRepository.save(subject);
+    }
 }
