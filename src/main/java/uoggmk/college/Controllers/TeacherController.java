@@ -16,6 +16,7 @@ import uoggmk.college.Services.Exceptions.LaboratoryAlreadyExistsException;
 import uoggmk.college.Services.Exceptions.StorageException;
 import uoggmk.college.Services.Exceptions.SubjectNotFoundException;
 import uoggmk.college.Services.Exceptions.UserNotFoundException;
+import uoggmk.college.Services.LaboratoryService;
 import uoggmk.college.Services.StorageService;
 import uoggmk.college.Services.UserService;
 
@@ -30,6 +31,9 @@ public class TeacherController {
 
     @Autowired
     private StorageService storageService;
+
+    @Autowired
+    private LaboratoryService laboratoryService;
 
     @GetMapping("/teacher")
     public String main(Model model) {
@@ -56,5 +60,11 @@ public class TeacherController {
             logger.error("[EXCEPTION] LaboratoryAlreadyExists while upload file (" + file.getOriginalFilename() + subjectId + ")");
         }
         return "redirect:/teacher";
+    }
+
+    @GetMapping("/teacher/laboratory/get")
+    public String getLaboratory(@RequestParam("subjectid") Long subjectId, Model model) {
+        model.addAttribute("laboratories", laboratoryService.getAllLaboratories(subjectId));
+        return "labs";
     }
 }
