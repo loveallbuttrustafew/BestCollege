@@ -32,7 +32,7 @@ import java.util.Set;
 public class TeacherController {
     Logger logger = LoggerFactory.getLogger(TeacherController.class);
 
-    @Value("${upload.path}")
+
     private String path;
 
     @Autowired

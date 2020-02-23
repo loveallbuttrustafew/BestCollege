@@ -45,7 +45,12 @@ public class UserService {
     }
 
     public Set<Subject> getAllSubjects(Long userId) throws UserNotFoundException {
-            User user = findById(userId);
-            return user.getSubjects();
+        User user = findById(userId);
+        return user.getSubjects();
+    }
+
+    public Set<Subject> getAllSubjectFromGroup(Long userId) throws UserNotFoundException {
+        User user = findById(userId);
+        return user.getGroup().getSubjects();
     }
 }

@@ -43,7 +43,7 @@ function get_info() {
 
 function get_labs(valll) {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', '/teacher/laboratory/get?subjectid=' + valll);
+    xhr.open('GET', '/student/laboratory/get?subjectid=' + valll);
     xhr.send();
     xhr.addEventListener('readystatechange',function(){
         labs_list.innerHTML = xhr.responseText;
