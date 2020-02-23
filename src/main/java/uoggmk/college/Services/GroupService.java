@@ -1,15 +1,14 @@
 package uoggmk.college.Services;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import uoggmk.college.Models.Group;
 import uoggmk.college.Repositories.GroupRepository;
 import uoggmk.college.Services.Exceptions.GroupAlreadyExistsException;
 import uoggmk.college.Services.Exceptions.GroupNotFoundException;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GroupService {

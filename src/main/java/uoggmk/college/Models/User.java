@@ -1,30 +1,18 @@
 package uoggmk.college.Models;
 
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import org.springframework.security.core.userdetails.UserDetails;
-
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Tolerate;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
 @Data
+@Builder
 @EqualsAndHashCode(exclude = {"group", "subjects"})
 @JsonIgnoreProperties(value = {"group", "subjects"})
 public class User {
@@ -48,4 +36,7 @@ public class User {
     private Group group;
     @ManyToMany(mappedBy = "teachers",fetch = FetchType.LAZY)
     private Set<Subject> subjects;
+
+    @Tolerate
+    public User(){ }
 }
