@@ -7,6 +7,7 @@ import uoggmk.college.Repositories.LaboratoryRepository;
 import uoggmk.college.Services.Exceptions.LaboratoryAlreadyExistsException;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class LaboratoryService {
@@ -17,5 +18,9 @@ public class LaboratoryService {
         Optional<Laboratory> laboratory1 = laboratoryRepository.findByOriginalNameAndSubjectId(laboratory.getOriginalName(), laboratory.getSubject().getId());
         if(laboratory1.isPresent()) throw new LaboratoryAlreadyExistsException();
         laboratoryRepository.save(laboratory);
+    }
+
+    public Set<Laboratory> getAllLaboratories(Long subjectId) {
+        return laboratoryRepository.findBySubjectId(subjectId);
     }
 }
