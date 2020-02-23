@@ -60,7 +60,7 @@
                 <form action="/teacher/upload/laboratory" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_csrf" value="{{_csrf.token}}">
                     <input type="hidden" value="" name="subjectid" id="sub_value">
-                    <input type="file" name="file">
+                    <input type="file" name="file" accept="application/msword">
                     <input type="submit" value="Добавить лабораторную">
                 </form>
             </ul>

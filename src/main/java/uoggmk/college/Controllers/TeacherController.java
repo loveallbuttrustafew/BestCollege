@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.InputStreamSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -76,8 +78,7 @@ public class TeacherController {
     }
 
     @GetMapping(value = "/teacher/download/{file_name}")
-    @ResponseBody
-    public FileSystemResource downloadLaboratory(@PathVariable("file_name") String name) {
-        return new FileSystemResource(new File(path + "/" + name));
+    public InputStreamResource downloadLaboratory(@PathVariable("file_name") String name) throws FileNotFoundException {
+        return new InputStreamResource(new FileInputStream(path + '/' + name));
     }
 }
