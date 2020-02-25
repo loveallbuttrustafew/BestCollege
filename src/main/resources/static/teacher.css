@@ -166,3 +166,7 @@ header{
         z-index: 999;
     }
 
+#labs_container{
+    display: flex;
+    justify-content: space-between;
+}

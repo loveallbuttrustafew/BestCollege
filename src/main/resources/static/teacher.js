@@ -20,6 +20,7 @@ let discipline_list = document.querySelectorAll('#discipline_list li');
 let discp_info = document.getElementById('info');
 let sub_value = document.getElementById('sub_value');
 let labs_list = document.getElementById('labs_list');
+let done_labs = document.getElementById('done_labs');
 discipline_list.forEach(element => {
     element.addEventListener('click', get_info);
 });
@@ -39,6 +40,7 @@ function get_info() {
     sub_value.value = this.getAttribute('subjectid');
     console.log(sub_value.value);
     get_labs(sub_value.value);
+    get_donelabs(sub_value.value);
 };
 
 function get_labs(valll) {
@@ -47,5 +49,14 @@ function get_labs(valll) {
     xhr.send();
     xhr.addEventListener('readystatechange',function(){
         labs_list.innerHTML = xhr.responseText;
+    });
+}
+
+function get_donelabs(valll) {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/teacher/donelaboratory/get?subjectid=' + valll);
+    xhr.send();
+    xhr.addEventListener('readystatechange',function(){
+        done_labs.innerHTML = xhr.responseText;
     });
 }
