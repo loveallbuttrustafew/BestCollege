@@ -46,6 +46,7 @@ add_admin_or_teacher.addEventListener('click', function () {
     `;
     let form_for_admin_or_user = document.getElementById('users_toast_form');//форма добавки админа или препода
     form_for_admin_or_user.style.display = 'block';
+    
 });
 add.addEventListener('click', function () {
     add_form.style.display = 'block';
@@ -73,6 +74,7 @@ add.addEventListener('click', function () {
     `;
     let add_group_form = document.getElementById('add_group_wrapper'); // форма для добавки группы
     add_group_form.style.display = 'block';
+    form_for_admin_or_user.display = 'none';
 });
 
 
@@ -98,9 +100,13 @@ xhr.addEventListener('readystatechange', function () {
                 for (let i = 0; i < isOpengroups.length; i++) {
                     if (isOpengroups[i].classList.contains('open')) {
                         isOpengroups[i].classList.remove('open');
+                        isOpengroups[i].style.backgroundColor = '';
+                        isOpengroups[i].style.color = '#000000';
                     }
                 };
                 this.classList.add('open');
+                this.style.backgroundColor = '#7908AA';
+                this.style.color = '#ffffff';
 
                 let xhr1 = new XMLHttpRequest();
                 xhr1.open('GET', '/admin/group/info?id=' + JSON.parse(xhr.responseText)[i]["id"]);// подготовка запроса для отправки на сервер
