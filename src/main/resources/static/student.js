@@ -39,6 +39,7 @@ function get_info() {
     discp_info.innerHTML = "<div><h2>" + info + "</h2></div>";
     sub_value.value = this.getAttribute('subjectid');
     get_labs(sub_value.value);
+    get_Myload_labs(sub_value.value);
 };
 
 function get_labs(valll) {
