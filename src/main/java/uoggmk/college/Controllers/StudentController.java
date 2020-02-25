@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import uoggmk.college.Models.Subject;
+import uoggmk.college.Services.DoneLaboratoryService;
 import uoggmk.college.Services.Exceptions.LaboratoryAlreadyExistsException;
 import uoggmk.college.Services.Exceptions.StorageException;
 import uoggmk.college.Services.Exceptions.SubjectNotFoundException;
@@ -41,6 +42,9 @@ public class StudentController {
     private LaboratoryService laboratoryService;
 
     @Autowired
+    private DoneLaboratoryService doneLaboratoryService;
+
+    @Autowired
     private StorageService storageService;
 
     @GetMapping("/student")
@@ -59,6 +63,12 @@ public class StudentController {
     @GetMapping("/student/laboratory/get")
     public String getLaboratory(@RequestParam("subjectid") Long subjectId, Model model) {
         model.addAttribute("laboratories", laboratoryService.getAllLaboratories(subjectId));
+        return "labs_student";
+    }
+
+    @GetMapping("/student/donelaboratory/get")
+    public String getDoneLaboratory(@RequestParam("subjectid") Long subjectId, Model model) {
+        model.addAttribute("laboratories", doneLaboratoryService.getAllDoneLaboratories(subjectId));
         return "labs_student";
     }
 
