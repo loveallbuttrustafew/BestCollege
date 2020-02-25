@@ -7,7 +7,7 @@ import lombok.experimental.Tolerate;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "laboratories")
+@Table(name = "done_laboratories")
 @Data
 @Builder
 public class DoneLaboratory {
@@ -19,6 +19,9 @@ public class DoneLaboratory {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subjectId")
     private Subject subject;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId")
+    private User user;
 
     @Tolerate
     public DoneLaboratory(){ }

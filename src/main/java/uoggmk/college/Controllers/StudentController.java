@@ -11,10 +11,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import uoggmk.college.Models.Subject;
+import uoggmk.college.Services.Exceptions.LaboratoryAlreadyExistsException;
+import uoggmk.college.Services.Exceptions.StorageException;
+import uoggmk.college.Services.Exceptions.SubjectNotFoundException;
 import uoggmk.college.Services.Exceptions.UserNotFoundException;
 import uoggmk.college.Services.LaboratoryService;
+import uoggmk.college.Services.StorageService;
 import uoggmk.college.Services.UserService;
 
 import java.io.FileInputStream;
@@ -33,6 +39,9 @@ public class StudentController {
 
     @Autowired
     private LaboratoryService laboratoryService;
+
+    @Autowired
+    private StorageService storageService;
 
     @GetMapping("/student")
     public String main(Model model) {
@@ -56,5 +65,23 @@ public class StudentController {
     @GetMapping(value = "/student/download/{file_name}")
     public InputStreamResource downloadLaboratory(@PathVariable("file_name") String name) throws FileNotFoundException {
         return new InputStreamResource(new FileInputStream(path + '/' + name));
+    }
+
+    @PostMapping(value = "/student/upload/laboratory", consumes = {"multipart/form-data"})
+    public String uploadLaboratory(@RequestParam("file") MultipartFile file, @RequestParam("subjectid") Long subjectId, Model model) {
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            String username = auth.getName();
+            storageService.uploadDoneLaboratory(file, subjectId, userService.findByUsername(username));
+        } catch (StorageException e) {
+            logger.error("[EXCEPTION] StorageException while upload done file (" + file.getOriginalFilename() + subjectId + ")");
+        } catch (SubjectNotFoundException e) {
+            logger.error("[EXCEPTION] SubjectNotFound while upload done file (" + file.getOriginalFilename() + subjectId + ")");
+        } catch (LaboratoryAlreadyExistsException e) {
+            logger.error("[EXCEPTION] LaboratoryAlreadyExists while upload done file (" + file.getOriginalFilename() + subjectId + ")");
+        } catch (UserNotFoundException e) {
+            logger.error("[EXCEPTION] UserNotFound while upload done file (" + file.getOriginalFilename() + subjectId + ")");
+        }
+        return "redirect:/teacher";
     }
 }
