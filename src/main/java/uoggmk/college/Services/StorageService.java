@@ -62,10 +62,10 @@ public class StorageService {
 
             Subject subject = subjectService.findById(subjectId);
 
-            Files.copy(is, Paths.get(path + user.getId() + subject.getGroup().getId()  + subjectId + fileName), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(is, Paths.get(path + user.getId().toString() + subject.getGroup().getId().toString()  + subjectId + fileName), StandardCopyOption.REPLACE_EXISTING);
 
             doneLaboratoryService.addDoneLaboratory(DoneLaboratory.builder().originalName(fileName).subject(subject).filepath(
-                    subject.getGroup().getId().toString() + subjectId.toString() + fileName).user(user).build());
+                    user.getId().toString() + subject.getGroup().getId().toString() + subjectId.toString() + fileName).user(user).build());
         } catch (IOException e) {
             throw new StorageException();
         }
