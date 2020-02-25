@@ -82,6 +82,6 @@ public class StudentController {
         } catch (UserNotFoundException e) {
             logger.error("[EXCEPTION] UserNotFound while upload done file (" + file.getOriginalFilename() + subjectId + ")");
         }
-        return "redirect:/teacher";
+        return "redirect:/student";
     }
 }
