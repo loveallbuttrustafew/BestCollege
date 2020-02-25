@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uoggmk.college.Models.DoneLaboratory;
 import uoggmk.college.Repositories.DoneLaboratoryRepository;
+import uoggmk.college.Services.Exceptions.DoneLaboratoryDoesntExistsException;
 import uoggmk.college.Services.Exceptions.LaboratoryAlreadyExistsException;
 
 import java.util.Optional;
@@ -22,5 +23,15 @@ public class DoneLaboratoryService {
 
     public Set<DoneLaboratory> getAllDoneLaboratories(Long subjectId) {
         return doneLaboratoryRepository.findBySubjectId(subjectId);
+    }
+
+    public DoneLaboratory findById(Long id) throws DoneLaboratoryDoesntExistsException {
+        Optional<DoneLaboratory> doneLaboratory = doneLaboratoryRepository.findById(id);
+        if(!doneLaboratory.isPresent()) throw new DoneLaboratoryDoesntExistsException();
+        return doneLaboratory.get();
+    }
+
+    public void update(DoneLaboratory doneLaboratory) {
+        doneLaboratoryRepository.save(doneLaboratory);
     }
 }

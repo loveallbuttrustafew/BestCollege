@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import uoggmk.college.Models.DoneLaboratory;
 import uoggmk.college.Models.Subject;
 import uoggmk.college.Services.DoneLaboratoryService;
-import uoggmk.college.Services.Exceptions.LaboratoryAlreadyExistsException;
-import uoggmk.college.Services.Exceptions.StorageException;
-import uoggmk.college.Services.Exceptions.SubjectNotFoundException;
-import uoggmk.college.Services.Exceptions.UserNotFoundException;
+import uoggmk.college.Services.Exceptions.*;
 import uoggmk.college.Services.LaboratoryService;
 import uoggmk.college.Services.StorageService;
 import uoggmk.college.Services.UserService;
@@ -89,6 +87,20 @@ public class TeacherController {
     public String getDoneLaboratories(@RequestParam("subjectid") Long subjectId, Model model) {
         model.addAttribute("laboratories", doneLaboratoryService.getAllDoneLaboratories(subjectId));
         return "donelabs";
+    }
+
+    @PostMapping("/teacher/laboratory/mark")
+    public void markDoneLaboratory(@RequestParam("laboratoryid") Long laboratoryId,@RequestParam("mark") Byte mark , Model model) throws DoneLaboratoryDoesntExistsException {
+        DoneLaboratory doneLaboratory = doneLaboratoryService.findById(laboratoryId);
+        doneLaboratory.setMark(mark);
+        doneLaboratoryService.update(doneLaboratory);
+    }
+
+    @PostMapping("/teacher/laboratory/conceived")
+    public void conceivedDoneLaboratory(@RequestParam("laboratoryid") Long laboratoryId,@RequestParam("conceived") Boolean conceived , Model model) throws DoneLaboratoryDoesntExistsException {
+        DoneLaboratory doneLaboratory = doneLaboratoryService.findById(laboratoryId);
+        doneLaboratory.setConceived(conceived);
+        doneLaboratoryService.update(doneLaboratory);
     }
 
     @GetMapping(value = "/teacher/download/{file_name}")

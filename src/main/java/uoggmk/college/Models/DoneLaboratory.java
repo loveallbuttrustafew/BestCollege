@@ -22,6 +22,8 @@ public class DoneLaboratory {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private User user;
+    private Byte mark;
+    private Boolean conceived;
 
     @Tolerate
     public DoneLaboratory(){ }
