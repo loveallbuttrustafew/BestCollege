@@ -4,7 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -24,8 +28,10 @@ import uoggmk.college.Services.LaboratoryService;
 import uoggmk.college.Services.StorageService;
 import uoggmk.college.Services.UserService;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Set;
 
 @Controller
@@ -73,8 +79,19 @@ public class StudentController {
     }
 
     @GetMapping(value = "/student/download/{file_name}")
-    public InputStreamResource downloadLaboratory(@PathVariable("file_name") String name) throws FileNotFoundException {
-        return new InputStreamResource(new FileInputStream(path + '/' + name));
+    public ResponseEntity<Resource> downloadLaboratory(@PathVariable("file_name") String name) throws IOException {
+        Path newPath = Paths.get(path + "/" + name);
+        ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(newPath));
+
+        HttpHeaders header = new HttpHeaders();
+        header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + name);
+        header.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        header.add("Pragma", "no-cache"); header.add("Expires", "0");
+
+        return ResponseEntity.ok()
+                .headers(header)
+                .contentType(MediaType.parseMediaType("application/octet-stream"))
+                .body(resource);
     }
 
     @PostMapping(value = "/student/upload/laboratory", consumes = {"multipart/form-data"})
