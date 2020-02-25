@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import sun.management.FileSystem;
 import uoggmk.college.Models.Subject;
+import uoggmk.college.Services.DoneLaboratoryService;
 import uoggmk.college.Services.Exceptions.LaboratoryAlreadyExistsException;
 import uoggmk.college.Services.Exceptions.StorageException;
 import uoggmk.college.Services.Exceptions.SubjectNotFoundException;
@@ -43,6 +44,9 @@ public class TeacherController {
 
     @Autowired
     private LaboratoryService laboratoryService;
+
+    @Autowired
+    private DoneLaboratoryService doneLaboratoryService;
 
     @GetMapping("/teacher")
     public String main(Model model) {
@@ -75,6 +79,12 @@ public class TeacherController {
     public String getLaboratory(@RequestParam("subjectid") Long subjectId, Model model) {
         model.addAttribute("laboratories", laboratoryService.getAllLaboratories(subjectId));
         return "labs";
+    }
+
+    @GetMapping("/teacher/donelaboratory/get")
+    public String getDoneLaboratories(@RequestParam("subjectid") Long subjectId, Model model) {
+        model.addAttribute("laboratories", doneLaboratoryService.getAllDoneLaboratories(subjectId));
+        return "donelabs";
     }
 
     @GetMapping(value = "/teacher/download/{file_name}")
