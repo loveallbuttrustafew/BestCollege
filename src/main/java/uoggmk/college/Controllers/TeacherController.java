@@ -90,17 +90,19 @@ public class TeacherController {
     }
 
     @PostMapping("/teacher/laboratory/mark")
-    public void markDoneLaboratory(@RequestParam("laboratoryid") Long laboratoryId,@RequestParam("mark") Byte mark , Model model) throws DoneLaboratoryDoesntExistsException {
+    public String markDoneLaboratory(@RequestParam("laboratoryid") Long laboratoryId,@RequestParam("mark") Byte mark , Model model) throws DoneLaboratoryDoesntExistsException {
         DoneLaboratory doneLaboratory = doneLaboratoryService.findById(laboratoryId);
         doneLaboratory.setMark(mark);
         doneLaboratoryService.update(doneLaboratory);
+        return "redirect:/teacher";
     }
 
     @PostMapping("/teacher/laboratory/conceived")
-    public void conceivedDoneLaboratory(@RequestParam("laboratoryid") Long laboratoryId,@RequestParam("conceived") Boolean conceived , Model model) throws DoneLaboratoryDoesntExistsException {
+    public String conceivedDoneLaboratory(@RequestParam("laboratoryid") Long laboratoryId,@RequestParam("conceived") Boolean conceived , Model model) throws DoneLaboratoryDoesntExistsException {
         DoneLaboratory doneLaboratory = doneLaboratoryService.findById(laboratoryId);
         doneLaboratory.setConceived(conceived);
         doneLaboratoryService.update(doneLaboratory);
+        return "redirect:/teacher";
     }
 
     @GetMapping(value = "/teacher/download/{file_name}")

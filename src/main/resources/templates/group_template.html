@@ -27,14 +27,14 @@
         <table style="border: 1px solid">
             <thead>
                 <tr>
-                    <td>Название</td>
+                    <td>Название дисциплины</td>
                 </tr>
             </thead>
             <tbody>
         {{#group.subjects}}
         <tr style="border: 1px solid" subject_id="{{id}}">
             
-            <td><span subject_id="{{id}}">{{name}}</span> <button class="attache_teacher" subject_id="{{id}}" >+</button></td>
+            <td style="position: relative;"><span subject_id="{{id}}">{{name}}</span> <button style="position: absolute; right: 1px;top:2px;" class="attache_teacher" subject_id="{{id}}" >+</button></td>
             
         </tr>
         {{/group.subjects}}
@@ -45,11 +45,15 @@
 
 
 <!-------------------------------------------->
-<form action="/admin/user/add" method="POST" id="user_toast_form">
+<form action="/admin/user/add" method="POST" id="user_toast_form" style="z-index: 2;">
+    
     <input name="_csrf" type="hidden" value="{{_csrf.token}}"/>
     <input name="groupid" type="hidden" value="{{group.id}}"/>
     <input name="typeuser" type="hidden" value="STUDENT"/>
     <div id="add_user_wrapper">
+        <div class="close_button">
+            <!--Кнопка закрыть-->
+        </div>
         <div id="student_form_container">
             <div><input type="text" name="firstname" placeholder="Имя">
             <input type="text" name="secondname" placeholder="Фамилия">
@@ -67,10 +71,14 @@
 </form>
 
 <!--------------------------------------------------------------->
-<form action="/admin/subject/add" method="POST" id="discipline_toast_form">
+<form action="/admin/subject/add" method="POST" id="discipline_toast_form" style="z-index: 2;">
+   
     <input name="_csrf" type="hidden" value="{{_csrf.token}}"/>
     <input name="groupid" type="hidden" value="{{group.id}}"/>
     <div id="add_subject_wrapper">
+        <div class="close_button">
+            <!--Кнопка закрыть-->
+        </div>
         <div id="dicsipline_name">
             <div><input type="text" name="subjectname" placeholder="Название дисциплины"></div>
         </div>

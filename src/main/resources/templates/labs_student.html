@@ -1,5 +1,5 @@
 <ul>
     {{#laboratories}}
-    <a href="/student/download/{{filepath}}" download="{{originalName}}"><li>{{originalName}}</li></a>
+    <a href="/student/download/{{filepath}}" download="{{originalName}}"><li>Оценка - {{#mark}}{{mark}}{{/mark}}{{conceived}}{{#conceived}}{{/conceived}}{{originalName}}</li></a>
     {{/laboratories}}
 </ul>

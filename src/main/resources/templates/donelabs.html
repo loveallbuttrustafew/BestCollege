@@ -1,5 +1,32 @@
 <ul>
     {{#laboratories}}
     <a href="/teacher/download/{{filepath}}" download="{{originalName}}"><li>{{originalName}}<span>-{{user.firstName}} {{user.middleName}}</span></li></a>
+        <form action="/teacher/laboratory/conceived" method="POST">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+            <input type="hidden" name="laboratoryid" value="{{id}}">
+            <select name="conceived">
+                <option value="true">Зачтено</option>
+                <option value="false">Чё ха хуйня?</option>
+            </select>
+            <input type="submit" value="Оценить">
+        </form>
+        <form action="/teacher/laboratory/mark" method="POST">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+            <input type="hidden" name="laboratoryid" value="{{id}}">
+            <select name="mark">
+               <option value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+               <option value="7">7</option>
+               <option value="8">8</option>
+               <option value="9">9</option>
+               <option value="10">10</option>
+            </select>
+            <input type="submit" value="Оценить">
+        </form>
     {{/laboratories}}
 </ul>

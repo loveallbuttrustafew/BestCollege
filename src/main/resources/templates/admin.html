@@ -10,12 +10,19 @@
 
 <body>
     <!----------------------------------------HEADER---------------------------------------------------------------------------------------------->
-    <header>
-        <div id="logo_wrapper">
+    <header id="header">
+        <div class="logo_container">
+            <div id="logo_wrapper">
 
+            </div>
+            <div style="padding-left: 15px;">
+               <div style="color: white;font-size:32px;">УО "ГГМК"</div>
+               <div style="color: white;font-size: 13px;font-weight: 200;">Личный кабинет администратора</div>
+            </div>
         </div>
+     
         <div id="add">
-            <span>Добавить группу</span>
+            <span>Просмотр групп</span>
         </div>
         <div id="search">
             <input type="text" placeholder="Поиск">
@@ -36,6 +43,28 @@
                 </div>
             </div>
         </div>
+<!------------------------Слайдер---------------------------------------->
+        <div id="slide_container">
+            <div class="slider">
+                <div class="slider__wrapper">
+                <div class="slider__item"  id="1" style="background-image: url(https://lh3.googleusercontent.com/proxy/8KKV86BojTIJhXAEu82PBMDtnt5Cz9Gties-V1UO_lH7-jfcnlaOwGozInz7bflOUhllddyOKne9QAl5);">
+                  <div></div>
+                </div>
+                <div class="slider__item" id="2" style="background-image: url(https://lh3.googleusercontent.com/proxy/tF3rmOcLwh5zRVlLm1NiMmjH6GbdVJUzcs6mw-gNxE8e07k2JHViP_XMTPnXKkg5os63FoVh9nTSouQpUcPmTRB2);">
+                  <div ></div>
+                </div>
+                <div class="slider__item" id="3" style="background-image: url(https://sun9-54.userapi.com/c857628/v857628801/181df3/Lw95uWeajb0.jpg);">
+                  <div ></div>
+                </div>
+                <div class="slider__item" id="4" style="background-image: url(https://sun9-57.userapi.com/c857016/v857016153/b64ae/ecqryA4Tq60.jpg);">
+                  <div></div>
+                </div>
+              </div>
+              <a class="slider__control slider__control_left" href="#" role="button"></a>
+              <a class="slider__control slider__control_right" href="#" role="button"></a>
+            </div>
+        </div>
+            
 
         <!---------------------------------СПИСОК-ГРУПП------------------------------------------------------------------------------------------>
         <div id="groups">
@@ -51,19 +80,28 @@
         </div>
     </div>
 
-    <!-------------------------------------НАЧАЛО БЛОКА ВСПЛЫВАЮЩЕЙ ФОРМЫ------------------------------------------------------------------------->
-    <div id="add_toast_form">
+    <!-------------------------------------НАЧАЛО БЛОКА ВСПЛЫВАЮЩЕЙ ФОРМЫ Группы------------------------------------------------------------------------->
+    <div id="add_toast_form1">
         <!-------Кнопка закрытия формы------------>
-        <div id="close_toast_form_button">
+        <div class="close_toast_form_button">
             <!--Кнопка закрыть-->
         </div>
-        <!------------------------TEACHER LIST WRAPPER----------------------------------------------------->
+        <!----------------------------------Форма для добавки группы---------------------------------------------------------------->
+        <form action="/admin/group/add" method="POST" id="add_group_wrapper">
+            <input name="_csrf" type="hidden" value="{{_csrf.token}}" />
+            <div id="fields_groups">
 
-        <div id="teacher_list_wrapper">
+            </div>
+        </form>
+    </div>
 
+    <!-----------------------Форма 2-------------------------------------------->
+    <div id="add_toast_form2">
+        <!-------Кнопка закрытия формы------------>
+        <div class="close_toast_form_button">
+            <!--Кнопка закрыть-->
         </div>
-
-        <!-------------------НАЧАЛО ФОРМЫ ДЛЯ СОЗДАНИЯ ГРУППЫ-и админа с преподом-------------------------------------------->
+        <!-------------------НАЧАЛО ФОРМЫ ДЛЯ СОЗДАНИЯ  админа с преподом-------------------------------------------->
 
         <form action="/admin/user/add" method="POST" id="users_toast_form">
             <input name="_csrf" type="hidden" value="{{_csrf.token}}" />
@@ -71,11 +109,20 @@
 
             </div>
         </form>
-        <!----------------------------------Форма для добавки группы---------------------------------------------------------------->
-        <form action="/admin/group/add" method="POST">
-            <input name="_csrf" type="hidden" value="{{_csrf.token}}" />
-            <div id="fields_groups"></div>
-        </form>
+    </div>
+
+   
+    <!----------------------------------------------------------------------------------------------->
+
+    <!-----------------------Форма привязки препода к предмету-------------------------------------------->
+    <div id="add_toast_form3">
+        <!-------Кнопка закрытия формы------------>
+        <div class="close_toast_form_button">
+            <!--Кнопка закрыть-->
+        </div>
+        <div id="teacher_list_wrapper">
+
+        </div>
         <!---------ФОРМА ПРИВЯЗКИ ПРЕПОДА К ПРЕДМЕНТУ--------------->
         <form method="GET" action="/admin/subject/attache/teacher">
             <input name="_csrf" type="hidden" value="{{_csrf.token}}" />
@@ -85,7 +132,6 @@
             </div>
         </form>
     </div>
-   
     <!----------------------------------------------------------------------------------------------->
     <script src="admin.js"></script>
 </body>
