@@ -10,10 +10,18 @@
 
 <body>
     <!----------------------------------------HEADER---------------------------------------------------------------------------------------------->
-    <header>
-        <div id="logo_wrapper">
+    <header id="header">
+        <div class="logo_container">
+            <div id="logo_wrapper">
 
+            </div>
+            <div style="padding-left: 15px;">
+               <div style="color: white;font-size:32px;">УО "ГГМК"</div>
+               <div style="color: white;font-size: 13px;font-weight: 200;">Личный кабинет учащегося</div>
+            </div>
         </div>
+     
+      
         <div id="search">
             <input type="text" placeholder="Поиск">
         </div>
@@ -61,23 +69,15 @@
             </div>
             
 
-            <ul>
+            <ul id="form_lab" style="display: none;">
                 <form action="/student/upload/laboratory" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_csrf" value="{{_csrf.token}}">
                     <input type="hidden" value="" name="subjectid" id="sub_value">
                     <input type="file" name="file">
-                    <input type="submit" value="Добавить лабораторную">
+                    <input type="submit" value="Отправить лабораторную">
                 </form>
             </ul>
         </div>
-    </div>
-
-    <!-------------------------------------НАЧАЛО БЛОКА ВСПЛЫВАЮЩЕЙ ФОРМЫ------------------------------------------------------------------------->
-    <div id="add_toast_form">
-        <!-------Кнопка закрытия формы------------>
-        <div id="close_toast_form_button">
-            <!--Кнопка закрыть-->
-        </div>    
     </div>
 
     <script src="student.js"></script>

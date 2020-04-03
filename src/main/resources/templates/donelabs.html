@@ -1,16 +1,17 @@
-<ul>
+<ul >
     {{#laboratories}}
-    <a href="/teacher/download/{{filepath}}" download="{{originalName}}"><li>{{originalName}}<span>-{{user.firstName}} {{user.middleName}}</span></li></a>
-        <form action="/teacher/laboratory/conceived" method="POST">
+    <li>
+        <a  href="/teacher/download/{{filepath}}" download="{{originalName}}"><li>{{originalName}}<span>-{{user.firstName}} {{user.middleName}}</span></li></a>
+        <form style="display: inline-block;" action="/teacher/laboratory/conceived" method="POST">
             <input type="hidden" name="_csrf" value="{{_csrf.token}}">
             <input type="hidden" name="laboratoryid" value="{{id}}">
             <select name="conceived">
                 <option value="true">Зачтено</option>
-                <option value="false">Чё ха хуйня?</option>
+                <option value="false">Не Зачтено</option>
             </select>
             <input type="submit" value="Оценить">
         </form>
-        <form action="/teacher/laboratory/mark" method="POST">
+        <form style="display: inline-block;"  action="/teacher/laboratory/mark" method="POST">
             <input type="hidden" name="_csrf" value="{{_csrf.token}}">
             <input type="hidden" name="laboratoryid" value="{{id}}">
             <select name="mark">
@@ -28,5 +29,7 @@
             </select>
             <input type="submit" value="Оценить">
         </form>
+    </li>
+   
     {{/laboratories}}
 </ul>

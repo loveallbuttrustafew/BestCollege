@@ -4,15 +4,16 @@ let settings = document.getElementById('settings');
 let add_admin_or_teacher = document.getElementById('some_punct_menu');
 let exit = document.getElementById('exit');
 menu.addEventListener('mouseover', function () {
-    settings.style.backgroundImage = 'url(/img/setting.png)';
-    add_admin_or_teacher.style.backgroundImage = 'url(/img/point.png)';
-    exit.style.backgroundImage = 'url(/img/exit.png)';
-});
-menu.addEventListener('mouseout', function () {
-    settings.style.backgroundImage = '';
-    add_admin_or_teacher.style.backgroundImage = '';
-    exit.style.backgroundImage = '';
-});
+    settings.style.backgroundSize = '40px';
+    add_admin_or_teacher.style.backgroundSize = '40px';
+    exit.style.backgroundSize = '40px';
+ });
+ menu.addEventListener('mouseout', function () {
+     settings.style.backgroundSize = '0px';
+      add_admin_or_teacher.style.backgroundSize = '0px';
+      exit.style.backgroundSize = '0px';
+     
+ });
 
 // обработчик нажатия на предмент
 
@@ -20,6 +21,7 @@ let discipline_list = document.querySelectorAll('#discipline_list li');
 let discp_info = document.getElementById('info');
 let sub_value = document.getElementById('sub_value');
 let labs_list = document.getElementById('labs_list');
+let form = document.getElementById('form');
 let done_labs = document.getElementById('done_labs');
 discipline_list.forEach(element => {
     element.addEventListener('click', get_info);
@@ -33,12 +35,13 @@ function get_info() {
         }
     }
     this.classList.add('select');
+    form.style.display = 'block';
     this.style.color = '#ffffff';
-    this.style.backgroundColor = '#7908AA';
+    this.style.backgroundColor = '#072269';
     let info = this.textContent;
     discp_info.innerHTML = "<div><h2>" + info + "</h2></div>";
     sub_value.value = this.getAttribute('subjectid');
-    console.log(sub_value.value);
+   
     get_labs(sub_value.value);
     get_donelabs(sub_value.value);
 };

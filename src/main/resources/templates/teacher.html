@@ -10,10 +10,18 @@
 
 <body>
     <!----------------------------------------HEADER---------------------------------------------------------------------------------------------->
-    <header>
-        <div id="logo_wrapper">
+    <header id="header">
+        <div class="logo_container">
+            <div id="logo_wrapper">
 
+            </div>
+            <div style="padding-left: 15px;">
+               <div style="color: white;font-size:32px;">УО "ГГМК"</div>
+               <div style="color: white;font-size: 13px;font-weight: 200;">Личный кабинет преподавателя</div>
+            </div>
         </div>
+     
+      
         <div id="search">
             <input type="text" placeholder="Поиск">
         </div>
@@ -49,20 +57,28 @@
         </div>
         <!---------------------------------------ИНФОРМАЦИЯ О ПРЕДМЕТЕ-------------------------------------------------------------------------------->
         <div id="discipline_info">
-            <div id="info">
+
+            <div id="info" style="text-align: center;font-size: 16px;">
 
             </div>
-            <div id="labs_container">
-                <div id="labs_list"> 
-
-                </div>
-                <div id="done_labs">
+            <div id="labs_container" style="padding:5px" >
+                <label>
+                    <legend>Список добавленных лаб:</legend>
+                    <div id="labs_list" style="padding:5px;border: 1px solid black;font-size:12px;text-align: center;"> 
+                    
+                    </div>
+                </label>
+                <label>
+                    <legend>Список лаб студентов:</legend>
+                    <div id="done_labs" style="padding:5px;border: 1px solid black;font-size: 12px;text-align: center;">
     
-                </div>
+                    </div>
+                </label>
+                
             </div>
 
             <ul>
-                <form action="/teacher/upload/laboratory" method="POST" enctype="multipart/form-data">
+                <form id="form" style="display: none;" action="/teacher/upload/laboratory" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_csrf" value="{{_csrf.token}}">
                     <input type="hidden" value="" name="subjectid" id="sub_value">
                     <input type="file" name="file" accept="application/msword">

@@ -38,7 +38,6 @@ input{
 header{
     width: 100%;
     height: 130px;
-   /* background-image: url(/img/header.png);*/
     background-repeat: no-repeat;
     background-blend-mode: multiply;
     background-size:cover;
@@ -321,8 +320,8 @@ header>div{
     transition: 0.2s all ease;
 }
 #user-discipline_wrapper div:hover{
-    border: 1px solid #7908AA;
-    background-color: #7908AA;
+    border: 1px solid #072269;
+    background-color: #072269;
     color: white;
     cursor: pointer;
 }
@@ -375,7 +374,7 @@ header>div{
 }
 .selected{
     color: white;
-    background-color: green;
+    background-color: #072269;
 }
 
 

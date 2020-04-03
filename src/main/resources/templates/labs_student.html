@@ -1,5 +1,12 @@
-<ul>
-    {{#laboratories}}
-    <a href="/student/download/{{filepath}}" download="{{originalName}}"><li>Оценка - {{#mark}}{{mark}}{{/mark}}{{conceived}}{{#conceived}}{{/conceived}}{{originalName}}</li></a>
-    {{/laboratories}}
-</ul>
+
+  
+    <div>
+        
+        {{#laboratories}}
+        
+        <a style="border: 1px solid black;" href="/student/download/{{filepath}}" download="{{originalName}}"><div style="padding: 2px 25px;font-size: 13px;color: black;"><span style="color: black;"><span>Результ отправленной лабораторной работы:</span>Оценка - {{#mark}}{{mark}}{{/mark}} \\ </span> <span>(Зачёт: <span id="zach">{{conceived}}{{#conceived}}{{/conceived}}</span>)\\</span><span>{{originalName}}</span></div></a>
+        {{/laboratories}}
+    
+    </div>
+
+
