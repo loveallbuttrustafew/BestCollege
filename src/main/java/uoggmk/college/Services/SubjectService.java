@@ -25,6 +25,11 @@ public class SubjectService {
         subjectRepository.save(subject);
     }
 
+    public void deleteById(Long id) throws SubjectNotFoundException {
+        findById(id);
+        subjectRepository.deleteById(id);
+    }
+
     public Subject findById(Long id) throws SubjectNotFoundException{
         Optional<Subject> subject = subjectRepository.findById(id);
         if(!subject.isPresent()) throw new SubjectNotFoundException();

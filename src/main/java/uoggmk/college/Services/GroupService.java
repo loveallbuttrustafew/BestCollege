@@ -21,6 +21,11 @@ public class GroupService {
         return findedGroup.get();
     }
 
+    public void deleteById(Long id) throws GroupNotFoundException {
+        findById(id);
+        groupRepository.deleteById(id);
+    }
+
     public Group findByGroup(Group group) throws GroupNotFoundException {
         Optional<Group> findedGroup =
                 groupRepository.findByNameAndNumberAndCourse(group.getName(),group.getNumber(),group.getCourse());

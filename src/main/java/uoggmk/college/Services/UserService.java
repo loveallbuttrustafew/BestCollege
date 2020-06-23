@@ -31,6 +31,11 @@ public class UserService {
         return user.get();
     }
 
+    public void deleteById(Long id) throws UserNotFoundException {
+        findById(id);
+        userRepository.deleteById(id);
+    }
+
     public void addUser(User user) throws UserAlreadyExistsException {
         try {
             findByUsername(user.getUsername());
