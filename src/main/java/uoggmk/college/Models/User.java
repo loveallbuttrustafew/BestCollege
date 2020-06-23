@@ -31,10 +31,10 @@ public class User {
     private String lastName;
     private String studentsBookNumber;
     private String phoneNumber;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "groupId")
     private Group group;
-    @ManyToMany(mappedBy = "teachers",fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "teachers",fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<Subject> subjects;
 
     @Tolerate

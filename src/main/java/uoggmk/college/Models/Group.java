@@ -25,9 +25,9 @@ public class Group {
     private Byte number;
     @Column(nullable = false)
     private Byte course;
-    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<User> students;
-    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<Subject> subjects;
 
     @Tolerate
