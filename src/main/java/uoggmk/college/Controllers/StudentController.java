@@ -75,7 +75,7 @@ public class StudentController {
     @GetMapping("/student/donelaboratory/get")
     public String getDoneLaboratory(@RequestParam("subjectid") Long subjectId, Model model) {
         model.addAttribute("laboratories", doneLaboratoryService.getAllDoneLaboratories(subjectId));
-        return "labs_student";
+        return "donelabs_student";
     }
 
     @GetMapping(value = "/student/download/{file_name}")

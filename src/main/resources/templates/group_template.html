@@ -14,8 +14,8 @@
             </thead>
             <tbody>
             {{#group.students}}
-            <tr style="border: 1px solid">
-                <td>{{firstName}} {{lastName}} {{middleName}}</td>
+            <tr style="border: 1px solid" class="student">
+                <td><span class="names">{{firstName}} {{lastName}} {{middleName}}</span> </td>
                 <td>{{studentsBookNumber}}</td>
                 <td>{{phoneNumber}}</td>
             </tr>
@@ -55,7 +55,7 @@
             <!--Кнопка закрыть-->
         </div>
         <div id="student_form_container">
-            <div><input type="text" name="firstname" placeholder="Имя">
+            <div id="names_students"><input type="text" name="firstname" placeholder="Имя">
             <input type="text" name="secondname" placeholder="Фамилия">
             <input type="text" name="lastname" placeholder="Отчество"></div>
             <div><input type="text" name="studentbook" placeholder="Номер зачётки:"></div>

@@ -146,9 +146,30 @@ xhr.send(); // отправляем запрос
 xhr.addEventListener('readystatechange', function () {
     if (xhr.readyState === 4) {
         for (let i = 0; i < JSON.parse(xhr.responseText).length; i++) {
-            some_group_elem = document.createElement('li');
+
+            let some_group_elem = document.createElement('li');
+            some_group_elem.setAttribute('groupId',JSON.parse(xhr.responseText)[i]['id']);
+            some_group_elem.style.position = 'relative';
+            let closeBtn = document.createElement('img');
+            closeBtn.setAttribute('src','/img/closeBtn.png');
+            closeBtn.style.width = '30px';
+            closeBtn.style.position = 'absolute';
+            closeBtn.style.right = '10px';
+            closeBtn.style.bottom = '4px';
+            closeBtn.style.zIndex = '999';
+            closeBtn.addEventListener('click',function () {
+                let pt = confirm('Вы действительно хотите удалить группу?');
+                if(pt) {
+                    const xhr12 = new XMLHttpRequest();
+                    xhr12.open('GET', '/admin/group/delete?groupId=' + some_group_elem.getAttribute('groupId'));// подготовка запроса для отправки на сервер
+                    xhr12.send(); // отправляем запрос
+                    closeBtn.parentElement.style.display = 'none';
+                    all_group_info.innerHTML = '';
+                }
+            })
             some_group_elem.classList.add('close');
             some_group_elem.textContent = JSON.parse(xhr.responseText)[i]['name'];
+            some_group_elem.append(closeBtn);
             groups.appendChild(some_group_elem);
 
             some_group_elem.addEventListener('click', function () {
@@ -242,7 +263,7 @@ xhr.addEventListener('readystatechange', function () {
                     for (let i = 0; i < discipline_list.length; i++) {
                         discipline_list[i].addEventListener('click', function () {
                             let xhr2 = new XMLHttpRequest();
-                            dispId = document.querySelectorAll('#group_info #about_group #discipline_wrapper table tbody tr td span');
+                           let dispId = document.querySelectorAll('#group_info #about_group #discipline_wrapper table tbody tr td span');
                             dispId.forEach(element => {
                                 element.addEventListener('click', function () {
                                     console.log(element.getAttribute('subject_id'));

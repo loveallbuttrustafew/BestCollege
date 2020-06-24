@@ -1,5 +1,8 @@
 <div>
     {{#laboratories}}
-    <a style="padding: 3px 1px; text-decoration: none;display: block;border-bottom:1px solid black ;" href="/teacher/download/{{filepath}}" download="{{originalName}}">{{originalName}}</a>
+    <div id="labClick">
+        {{originalName}}
+        <a style="padding: 3px 1px; text-decoration: none;display: none;border-bottom:1px solid black ;" href="/teacher/download/{{filepath}}" download="{{originalName}}">{{originalName}}</a>
+    </div>
     {{/laboratories}}
 </div>
