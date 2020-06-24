@@ -22,7 +22,7 @@ public class Subject {
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     @JoinColumn(name = "groupId")
     private Group group;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinTable(
             name = "teacher_subject",
             joinColumns = @JoinColumn(name = "teacherId"),
