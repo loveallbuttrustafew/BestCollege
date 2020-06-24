@@ -19,7 +19,7 @@ public class Subject {
     @GeneratedValue
     private Long id;
     private String name;
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.DETACH)
     @JoinColumn(name = "groupId")
     private Group group;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
