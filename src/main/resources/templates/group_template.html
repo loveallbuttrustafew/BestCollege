@@ -10,14 +10,16 @@
                     <td>ФИО</td>
                     <td>Номер зачётки</td>
                     <td>Номер телефона</td>
+                    <td style="border: none">   </td>
                 </tr>
             </thead>
             <tbody>
             {{#group.students}}
             <tr style="border: 1px solid" class="student">
-                <td><span class="names">{{firstName}} {{lastName}} {{middleName}}</span> </td>
+                <td><span class="names">{{firstName}} {{lastName}} {{middleName}}</span></td>
                 <td>{{studentsBookNumber}}</td>
                 <td>{{phoneNumber}}</td>
+                <td style="padding: 0;border: none"><img class="delSt" src="/img/closeBtn.png"  style="width: 25px;padding: 0;cursor: pointer;margin-top:4px;" alt="" stId="{{id}}" ></td>
             </tr>
             {{/group.students}}
             </tbody>
@@ -34,8 +36,8 @@
         {{#group.subjects}}
         <tr style="border: 1px solid" subject_id="{{id}}">
             
-            <td style="position: relative;"><span subject_id="{{id}}">{{name}}</span> <button style="position: absolute; right: 1px;top:2px;" class="attache_teacher" subject_id="{{id}}" >+</button></td>
-            
+            <td style="position: relative;"><span style="padding-left: 30px" subject_id="{{id}}">{{name}}</span> <button style="position: absolute; right: 1px;top:2px;" class="attache_teacher" subject_id="{{id}}" >+</button></td>
+            <td style="padding: 0;border: none"><img class="delDisc" src="/img/closeBtn.png"  style="width: 25px;padding: 0;cursor: pointer;margin-top:4px;" alt="" delDisc="{{id}}" ></td>
         </tr>
         {{/group.subjects}}
             </tbody>

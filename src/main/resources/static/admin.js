@@ -258,12 +258,42 @@ xhr.addEventListener('readystatechange', function () {
                         table_container_students.style.display = 'block';
                         });
                     }
- 
+
+                    let delDisc = document.getElementsByClassName('delDisc');
+
+                    for (let i = 0;i<delDisc.length;i++) {
+                        delDisc[i].addEventListener('click', function () {
+                            let ptt = confirm('Вы действительно хотите удалить дисциплину?');
+                            if (ptt) {
+                                const xhr13 = new XMLHttpRequest();
+                                xhr13.open('GET', '/admin/subject/delete?subjectId=' + this.getAttribute('delDisc'));// подготовка запроса для отправки на сервер
+                                xhr13.send(); // отправляем запрос
+                                delDisc[i].parentElement.parentElement.style.display = 'none';
+
+                            }
+                        });
+                    }
+                    let delSt = document.getElementsByClassName('delSt');
+
+                    for (let i = 0;i<delSt.length;i++) {
+                        delSt[i].addEventListener('click', function () {
+                            let ptt = confirm('Вы действительно хотите удалить учащегося?');
+                            if (ptt) {
+                                const xhr13 = new XMLHttpRequest();
+                                xhr13.open('GET', '/admin/user/delete?userId=' + this.getAttribute('stId'));// подготовка запроса для отправки на сервер
+                                xhr13.send(); // отправляем запрос
+                                delSt[i].parentElement.parentElement.style.display = 'none';
+
+
+                            }
+                        });
+                    }
                     /*-------------------Обработчик нажатия на дисциплину---------------------------------------------------*/
                     for (let i = 0; i < discipline_list.length; i++) {
                         discipline_list[i].addEventListener('click', function () {
                             let xhr2 = new XMLHttpRequest();
                            let dispId = document.querySelectorAll('#group_info #about_group #discipline_wrapper table tbody tr td span');
+
                             dispId.forEach(element => {
                                 element.addEventListener('click', function () {
                                     console.log(element.getAttribute('subject_id'));
@@ -286,7 +316,6 @@ xhr.addEventListener('readystatechange', function () {
 
     }
 });
-
 
 
 // слайдер
