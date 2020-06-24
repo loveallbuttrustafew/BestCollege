@@ -16,7 +16,7 @@ public class Laboratory {
     private Long id;
     private String filepath;
     private String originalName;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinColumn(name = "subjectId")
     private Subject subject;
 
